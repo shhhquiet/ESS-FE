@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/shhhquiet/ESS-Frontend#readme",
   "dependencies": {
+    "next": "^8.0.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   }
