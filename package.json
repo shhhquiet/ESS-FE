@@ -21,6 +21,9 @@
   },
   "homepage": "https://github.com/shhhquiet/ESS-Frontend#readme",
   "dependencies": {
+    "@material-ui/core": "^3.9.3",
+    "@material-ui/icons": "^3.0.2",
+    "@material-ui/styles": "^3.0.0-alpha.10",
     "next": "^8.0.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
