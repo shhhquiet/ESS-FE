@@ -14,7 +14,13 @@ const useStyles = makeStyles({
   box: {
     height: '90px',
     width: '150px',
-    border: '1px solid black'
+    border: '1px solid black',
+    '&:not(:last-child)': {
+      borderBottom: '2px dotted black'
+    },
+    '&:nth-child(2)': {
+      borderTop: 'none'
+    }
   },
   clear: {
     backgroundColor: 'gray'
@@ -30,15 +36,16 @@ const useStyles = makeStyles({
 export default function Timeline({ slots }) {
   const classes = useStyles();
 
+  //* We need to unflatten the array so that we can easily switch our flex-container to column when we switch to mobile */
   function arrayReduce(arr, n) {
     return arr.reduce((a, e, i) => {
-      if (i%n == 0) {
-        a.push([e])
+      if (i % n == 0) {
+        a.push([e]);
       } else {
-        a[a.length-1].push(e)
+        a[a.length - 1].push(e);
       }
-      return a
-    },[])
+      return a;
+    }, []);
   }
 
   var tuples = arrayReduce(slots, 2);
@@ -46,7 +53,6 @@ export default function Timeline({ slots }) {
   return (
     <div className={classes.timeline}>
       {tuples.map((tuple, index) => {
-        console.log(timeMap[index])
         return (
           <div>
             <div className={`${classes.box} + " " + ${classes[tuple[0]]}`}>{timeMap[index][0]}</div>
