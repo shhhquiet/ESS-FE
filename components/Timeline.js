@@ -9,12 +9,14 @@ const useStyles = makeStyles({
     flexWrap: 'wrap',
     flexDirection: 'column',
     alignContent: 'center',
-    height: '205px'
+    height: '200px'
   },
+
   box: {
     height: '90px',
     width: '150px',
     border: '1px solid black',
+    borderLeft: 'none',
     '&:not(:last-child)': {
       borderBottom: '2px dotted black'
     },
@@ -30,8 +32,12 @@ const useStyles = makeStyles({
   },
   availible: {
     backgroundColor: 'blue'
-  }
+  },
+  twoBoxes: {
+    color: 'red'
+  },
 });
+
 
 export default function Timeline({ slots }) {
   const classes = useStyles();
@@ -54,9 +60,9 @@ export default function Timeline({ slots }) {
     <div className={classes.timeline}>
       {tuples.map((tuple, index) => {
         return (
-          <div>
-            <div className={`${classes.box} + " " + ${classes[tuple[0]]}`}>{timeMap[index][0]}</div>
-            <div className={`${classes.box} + " " + ${classes[tuple[1]]}`}>{timeMap[index][1]}</div>
+          <div className={`${classes.twoBoxes}`}>
+            <div className={`${classes.box} ${classes[tuple[0]]}`}>{timeMap[index][0]}</div>
+            <div className={`${classes.box} ${classes[tuple[1]]}`}>{timeMap[index][1]}</div>
           </div>
         );
       })}

@@ -1,6 +1,5 @@
 import { configure, addDecorator } from '@storybook/react';
 
-//This stuf isn't working --
 import * as React from 'react';
 import GlobalStyle from '../utils/GlobalStyle';
 
