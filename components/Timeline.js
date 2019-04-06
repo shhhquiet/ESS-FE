@@ -12,6 +12,12 @@ const useStyles = makeStyles({
     height: '200px'
   },
 
+  twoBoxes: {
+    color: 'red',
+    '&:first-child': {
+      borderLeft: '1px solid black'
+    }
+  },
   box: {
     height: '90px',
     width: '150px',
@@ -32,12 +38,8 @@ const useStyles = makeStyles({
   },
   availible: {
     backgroundColor: 'blue'
-  },
-  twoBoxes: {
-    color: 'red'
-  },
+  }
 });
-
 
 export default function Timeline({ slots }) {
   const classes = useStyles();
