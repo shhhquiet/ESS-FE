@@ -85,8 +85,9 @@ const sidebarStyle = theme => ({
 	blueBackground: {
 		color: whiteColor,
 		'&:after': {
-			background: infoColor[0],
-			opacity: '.93',
+			background: `linear-gradient(${theme.palette.primary.light}, ${theme.palette.primary
+				.dark} 80%)`,
+			opacity: '.8',
 		},
 	},
 	whiteBackground: {
@@ -129,7 +130,7 @@ const sidebarStyle = theme => ({
 		display: 'inline-block',
 		maxHeight: '30px',
 		marginLeft: '22px',
-		marginRight: '18px',
+		marginRight: '10px',
 		marginTop: '7px',
 		color: 'inherit',
 	},
@@ -146,9 +147,9 @@ const sidebarStyle = theme => ({
 		transform: 'translate3d(0px, 0, 0)',
 		textTransform: 'uppercase',
 		padding: '5px 0px',
-		fontSize: '18px',
+		fontSize: '14px',
 		whiteSpace: 'nowrap',
-		fontWeight: '400',
+		fontWeight: '600',
 		lineHeight: '30px',
 		overflow: 'hidden',
 		'&,&:hover,&:focus': {
@@ -390,7 +391,7 @@ const sidebarStyle = theme => ({
 	blue: {
 		'&,&:hover,&:focus': {
 			color: whiteColor,
-			backgroundColor: infoColor[0],
+			backgroundColor: theme.primary,
 			boxShadow:
 				'0 12px 20px -10px rgba(' +
 				hexToRgb(infoColor[0]) +
