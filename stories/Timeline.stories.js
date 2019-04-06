@@ -28,15 +28,35 @@ export const withMixedSlots = [
   'booked',
   'clear'
 ];
+export const withClientMixedSlots = [
+  ...defaultSlots.slice(0, 8),
+  'yourAppointment',
+  'yourAppointment',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked'
+];
 
 export const actions = {
   onClear: action('onClear'),
+  onAlertUnavailible: action('onAlertUnavailible'),
   onAvailible: action('onAvailible'),
   onBooked: action('onBooked'),
-}
+  onClientLookup: action('onClientLookup')
+};
 
 storiesOf('Timeline', module)
   .add('default', () => <Timeline day={'Tuesday'} slots={defaultSlots} {...actions} />)
   .add('withBookedSlots', () => <Timeline day={'Tuesday'} slots={withBookedSlots} {...actions} />)
-  .add('withAvailibleSlots', () => <Timeline day={'Tuesday'} slots={withAvailibleSlots} {...actions} />)
-  .add('withMixedSlots', () => <Timeline day={'Tuesday'} slots={withMixedSlots} {...actions} />);
+  .add('withAvailibleSlots', () => (
+    <Timeline day={'Tuesday'} slots={withAvailibleSlots} {...actions} />
+  ))
+  .add('withMixedSlots', () => <Timeline day={'Tuesday'} slots={withMixedSlots} {...actions} />)
+  .add('forClient', () => (
+    <Timeline timelineType={'client'} day={'Wednesay'} slots={withClientMixedSlots} {...actions} />
+  ));

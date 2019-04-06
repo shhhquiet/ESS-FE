@@ -60,10 +60,23 @@ const useStyles = makeStyles({
   },
   availible: {
     backgroundColor: vars.timelineAvailible
+  },
+  yourAppointment: {
+    backgroundColor: vars.timelineYourAppointment
   }
 });
 
-export default function Timeline({ slots, day, onClear, onAvailible, onBooked, ...props }) {
+export default function Timeline({
+  slots,
+  day,
+  timelineType,
+  onClear,
+  onAlertUnavailible,
+  onAvailible,
+  onBooked,
+  onClientLookup,
+  ...props
+}) {
   //*I don't know why this has to be destructured from this scope but it does.
   //* Passing props in as an argument to useStyles is mandatory
   const { color } = props;
@@ -82,13 +95,40 @@ export default function Timeline({ slots, day, onClear, onAvailible, onBooked, .
     }, []);
   }
 
-  const handleClick = (state, slot) => {
-    if (state === 'clear') {
-      onBooked(slot);
-    } else if (state === 'booked') {
-      onClear(slot);
+  const handleClick = (type, state, slot) => {
+    switch (type) {
+      case 'client':
+        if (state === 'clear') {
+          onBooked(slot);
+        } else if (state === 'booked') {
+          onAlertUnavailible();
+        } else if (state === 'yourAppointment') {
+          onClear(slot);
+        } else {
+          console.log('weewppzzz');
+        }
+        break;
+
+      case 'instructor availibility':
+        if (state === 'clear') {
+          onAvailible(slot);
+        } else if (state === 'availible') {
+          onClear(slot);
+        } else {
+          console.log('ruh-roh');
+        }
+        break;
+
+      case 'instructor schedule':
+        if (state === 'booked') {
+          onClientLookup();
+        }
+        break;
+
+      default:
+        console.log('default');
     }
-  }
+  };
 
   var tuples = arrayReduce(slots, 2);
 
@@ -100,10 +140,18 @@ export default function Timeline({ slots, day, onClear, onAvailible, onBooked, .
           return (
             <div className={classes.twoBoxes}>
               <div className={classes.hours}>{businessHours[index]}</div>
-              <div onClick={()=> handleClick(tuple[0], index)} className={`${classes.box} ${classes[tuple[0]]}`}>
+
+              {/* This PhD level math reflattens the array for return to the backend */}
+              <div
+                onClick={() => handleClick(timelineType, tuple[0], index * 2)}
+                className={`${classes.box} ${classes[tuple[0]]}`}
+              >
                 <span className={classes.minutes}>:00</span>
               </div>
-              <div onClick={()=> handleClick (tuple[1], index)}  className={`${classes.box} ${classes[tuple[1]]}`}>
+              <div
+                onClick={() => handleClick(timelineType, tuple[1], index * 2 + 1)}
+                className={`${classes.box} ${classes[tuple[1]]}`}
+              >
                 <span className={classes.minutes}>:30</span>
               </div>
             </div>
