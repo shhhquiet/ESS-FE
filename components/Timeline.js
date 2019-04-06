@@ -104,6 +104,7 @@ export default function Timeline({
           onAlertUnavailible();
         } else if (state === 'yourAppointment') {
           onClear(slot);
+          console.log('Your Apointment has been Cancelled');
         } else {
           console.log('weewppzzz');
         }
@@ -122,6 +123,10 @@ export default function Timeline({
       case 'instructor schedule':
         if (state === 'booked') {
           onClientLookup();
+        } else if (state === 'clear') {
+          onAvailible(slot);
+        } else {
+          console.log('Looks like Laurnado blew through here');
         }
         break;
 

@@ -41,6 +41,28 @@ export const withClientMixedSlots = [
   'booked',
   'booked'
 ];
+export const withInstructorAvailibleSlots = [
+  ...defaultSlots.slice(0, 10),
+  'availible',
+  'availible',
+  'availible',
+  'availible',
+  'availible',
+  'availible',
+  'availible',
+  'availible'
+];
+export const withInstructorScheduleSlots = [
+  ...defaultSlots.slice(0, 10),
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked'
+];
 
 export const actions = {
   onClear: action('onClear'),
@@ -59,4 +81,20 @@ storiesOf('Timeline', module)
   .add('withMixedSlots', () => <Timeline day={'Tuesday'} slots={withMixedSlots} {...actions} />)
   .add('forClient', () => (
     <Timeline timelineType={'client'} day={'Wednesay'} slots={withClientMixedSlots} {...actions} />
+  ))
+  .add('forInstructorAvailibility', () => (
+    <Timeline
+      timelineType={'instructor availibility'}
+      day={'Thursday'}
+      slots={withInstructorAvailibleSlots}
+      {...actions}
+    />
+  ))
+  .add('forInstructorScheduled', () => (
+    <Timeline
+      timelineType={'instructor schedule'}
+      day={'Friday'}
+      slots={withInstructorScheduleSlots}
+      {...actions}
+    />
   ));
