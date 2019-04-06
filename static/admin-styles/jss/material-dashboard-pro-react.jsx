@@ -92,7 +92,7 @@ const container = {
 
 const defaultFont = {
 	fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
-	fontWeight: '300',
+	fontWeight: '500',
 	lineHeight: '1.5em',
 };
 
