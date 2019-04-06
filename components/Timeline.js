@@ -1,13 +1,17 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
+import * as vars from '../utils/jssVariables';
 
 // import { timeMap } from '../utils/timeMap';
 
 const businessHours = [9, 10, 11, 12, 1, 2, 3, 4, 5];
 
+const styledBy = (property, mapping) => props => mapping[props[property]];
+
 const useStyles = makeStyles({
   day: {
-    margin: '2rem 0 0 2rem'
+    margin: '2rem 0 0 2rem',
+    display: 'inline'
   },
   numbers: {
     display: 'flex'
@@ -15,27 +19,28 @@ const useStyles = makeStyles({
   timeline: {
     display: 'flex',
     alignContent: 'center',
-    border: '1px solid #a8a8a8',
+    border: `1px solid ${vars.timelineBorderColor}`,
     margin: '0 2rem 2rem 2rem',
     borderRadius: '3px',
-    boxShadow: '0 .4rem 1rem rgba(0,0,0, .4)'
+    boxShadow: vars.timelineBoxShadow
   },
   hours: {
     textAlign: 'center',
     fontSize: '2rem',
     fontWeight: 200,
-    borderBottom: '1px solid #a8a8a8'
+    borderBottom: `1px solid ${vars.timelineBorderColor}`
   },
   twoBoxes: {
     flex: '1 1 auto'
   },
+
   box: {
     flex: '1 1 auto',
     position: 'relative',
     height: '90px',
-    borderRight: '1px solid #a8a8a8',
+    borderRight: `1px solid ${vars.timelineBorderColor}`,
     '&:not(:last-child)': {
-      borderBottom: '1px dotted #a8a8a8'
+      borderBottom: `1px solid ${vars.timelineBorderColor}`
     }
   },
   minutes: {
@@ -45,23 +50,27 @@ const useStyles = makeStyles({
     transform: 'translate(-50%, -50%)',
     fontSize: '1.8rem',
     fontWeight: '200',
-    color: '#3f3f3f'
+    color: vars.timeColor
   },
   clear: {
-    backgroundColor: '#f7f7f7'
+    backgroundColor: vars.timelineClear
   },
   booked: {
-    backgroundColor: '#ffb1b1'
+    backgroundColor: vars.timelineBooked
   },
   availible: {
-    backgroundColor: '#b1e8ff'
+    backgroundColor: vars.timelineAvailible
   }
 });
 
-export default function Timeline({ slots, day }) {
-  const classes = useStyles();
+export default function Timeline({ slots, day, onClear, onAvailible, onBooked, ...props }) {
+  //*I don't know why this has to be destructured from this scope but it does.
+  //* Passing props in as an argument to useStyles is mandatory
+  const { color } = props;
+  const classes = useStyles(props);
+  //* */
 
-  //* We need to unflatten the array so that we can easily switch our flex-container to column when we switch to mobile */
+  //* We need to make a 2d array so that we can easily switch our flex-container to column when we switch to mobile */
   function arrayReduce(arr, n) {
     return arr.reduce((a, e, i) => {
       if (i % n == 0) {
@@ -71,6 +80,14 @@ export default function Timeline({ slots, day }) {
       }
       return a;
     }, []);
+  }
+
+  const handleClick = (state, slot) => {
+    if (state === 'clear') {
+      onBooked(slot);
+    } else if (state === 'booked') {
+      onClear(slot);
+    }
   }
 
   var tuples = arrayReduce(slots, 2);
@@ -83,10 +100,10 @@ export default function Timeline({ slots, day }) {
           return (
             <div className={classes.twoBoxes}>
               <div className={classes.hours}>{businessHours[index]}</div>
-              <div className={`${classes.box} ${classes[tuple[0]]}`}>
+              <div onClick={()=> handleClick(tuple[0], index)} className={`${classes.box} ${classes[tuple[0]]}`}>
                 <span className={classes.minutes}>:00</span>
               </div>
-              <div className={`${classes.box} ${classes[tuple[1]]}`}>
+              <div onClick={()=> handleClick (tuple[1], index)}  className={`${classes.box} ${classes[tuple[1]]}`}>
                 <span className={classes.minutes}>:30</span>
               </div>
             </div>
