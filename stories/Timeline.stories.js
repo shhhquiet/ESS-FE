@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import Timeline from '../components/Timeline';
+import GlobalStyle from '../utils/GlobalStyle';
 
 export const defaultSlots = new Array(18).fill('clear');
 
