@@ -1,9 +1,14 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 
-import { timeMap } from '../utils/timeMap';
+// import { timeMap } from '../utils/timeMap';
+
+const businessHours = [9, 10, 11, 12, 1, 2, 3, 4, 5];
 
 const useStyles = makeStyles({
+  numbers: {
+    display: 'flex'
+  },
   timeline: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -13,12 +18,32 @@ const useStyles = makeStyles({
   },
 
   twoBoxes: {
-    color: 'red',
-    '&:first-child': {
-      borderLeft: '1px solid black'
+    boxShadow: '0 10px 10px rgba(0,0,0, .6)'
+  },
+  hours: {
+    textAlign: 'center',
+    fontSize: '30px',
+    fontWeight: 200
+  },
+  startBox: {
+    position: 'relative',
+    height: '90px',
+    width: '150px',
+    border: '1px solid black',
+    '&:not(:last-child)': {
+      borderBottom: '2px dotted black'
+    },
+    '&:nth-child(2)': {
+      borderTopLeftRadius: '3px'
+    },
+
+    '&:nth-child(3)': {
+      borderTop: 'none',
+      borderBottomLeftRadius: '3px'
     }
   },
   box: {
+    position: 'relative',
     height: '90px',
     width: '150px',
     border: '1px solid black',
@@ -26,18 +51,27 @@ const useStyles = makeStyles({
     '&:not(:last-child)': {
       borderBottom: '2px dotted black'
     },
-    '&:nth-child(2)': {
+    '&:nth-child(3)': {
       borderTop: 'none'
     }
   },
+  minutes: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    fontSize: '25px',
+    fontWeight: '200',
+    color: '#3f3f3f'
+  },
   clear: {
-    backgroundColor: 'gray'
+    backgroundColor: '#f7f7f7'
   },
   booked: {
-    backgroundColor: 'pink'
+    backgroundColor: '#ffb1b1'
   },
   availible: {
-    backgroundColor: 'blue'
+    backgroundColor: '#b1e8ff'
   }
 });
 
@@ -62,9 +96,14 @@ export default function Timeline({ slots }) {
     <div className={classes.timeline}>
       {tuples.map((tuple, index) => {
         return (
-          <div className={`${classes.twoBoxes}`}>
-            <div className={`${classes.box} ${classes[tuple[0]]}`}>{timeMap[index][0]}</div>
-            <div className={`${classes.box} ${classes[tuple[1]]}`}>{timeMap[index][1]}</div>
+          <div className={classes.twoBoxes}>
+            {/* <div className={classes.hours}>{businessHours[index]}</div> */}
+            <div className={`${index === 0 ? classes.startBox : classes.box} ${classes[tuple[0]]}`}>
+              <span className={classes.minutes}>:00</span>
+            </div>
+            <div className={`${index === 0 ? classes.startBox : classes.box} ${classes[tuple[1]]}`}>
+              <span className={classes.minutes}>:30</span>
+            </div>
           </div>
         );
       })}
