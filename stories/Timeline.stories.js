@@ -30,7 +30,7 @@ export const withMixedSlots = [
 ];
 
 storiesOf('Timeline', module)
-  .add('default', () => <Timeline slots={defaultSlots} />)
-  .add('withBookedSlots', () => <Timeline slots={withBookedSlots} />)
-  .add('withAvailibleSlots', () => <Timeline slots={withAvailibleSlots} />)
-  .add('withMixedSlots', () => <Timeline slots={withMixedSlots} />);
+  .add('default', () => <Timeline day={'Tuesday'} slots={defaultSlots} />)
+  .add('withBookedSlots', () => <Timeline day={'Tuesday'} slots={withBookedSlots} />)
+  .add('withAvailibleSlots', () => <Timeline day={'Tuesday'} slots={withAvailibleSlots} />)
+  .add('withMixedSlots', () => <Timeline day={'Tuesday'} slots={withMixedSlots} />);
