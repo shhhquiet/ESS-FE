@@ -34,6 +34,7 @@
     "react-dom": "^16.8.6",
     "react-image-gallery": "^0.8.16",
     "react-jss": "^8.6.1",
+    "react-spring": "^8.0.19",
     "styled-components": "^4.2.0",
     "styled-reboot": "^3.0.2"
   },

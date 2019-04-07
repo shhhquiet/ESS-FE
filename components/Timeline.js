@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
+import { useSpring, animated } from 'react-spring';
+
 import * as vars from '../utils/jssVariables';
 
 // import { timeMap } from '../utils/timeMap';
@@ -41,7 +43,8 @@ const useStyles = makeStyles({
     borderRight: `1px solid ${vars.timelineBorderColor}`,
     '&:not(:last-child)': {
       borderBottom: `1px solid ${vars.timelineBorderColor}`
-    }
+    },
+    cursor: 'pointer'
   },
   minutes: {
     position: 'absolute',
@@ -83,6 +86,9 @@ export default function Timeline({
   const classes = useStyles(props);
   //* */
 
+  const [toggle, setToggle] = useState(false);
+  const bg = useSpring({ backgroundColor: 'yellow' });
+
   //* We need to make a 2d array so that we can easily switch our flex-container to column when we switch to mobile */
   function arrayReduce(arr, n) {
     return arr.reduce((a, e, i) => {
@@ -94,6 +100,8 @@ export default function Timeline({
       return a;
     }, []);
   }
+
+  const tuples = arrayReduce(slots, 2);
 
   const handleClick = (type, state, slot) => {
     switch (type) {
@@ -122,7 +130,7 @@ export default function Timeline({
 
       case 'instructor schedule':
         if (state === 'booked') {
-          onClientLookup();
+          onClientLookup(slot);
         } else if (state === 'clear') {
           onAvailible(slot);
         } else {
@@ -134,8 +142,6 @@ export default function Timeline({
         console.log('default');
     }
   };
-
-  var tuples = arrayReduce(slots, 2);
 
   return (
     <div>
