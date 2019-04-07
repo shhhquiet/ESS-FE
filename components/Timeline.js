@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { useSpring, animated } from 'react-spring';
+// import { useSpring, animated } from 'react-spring';
 
 import * as vars from '../utils/jssVariables';
 
@@ -86,8 +86,8 @@ export default function Timeline({
   const classes = useStyles(props);
   //* */
 
-  const [toggle, setToggle] = useState(false);
-  const bg = useSpring({ backgroundColor: 'yellow' });
+  // const [toggle, setToggle] = useState(false);
+  // const bg = useSpring();
 
   //* We need to make a 2d array so that we can easily switch our flex-container to column when we switch to mobile */
   function arrayReduce(arr, n) {
@@ -154,13 +154,13 @@ export default function Timeline({
 
               {/* This PhD level math reflattens the array for return to the backend */}
               <div
-                onClick={() => handleClick(timelineType, tuple[0], index * 2)}
+                onClick={() => handleClick(timelineType, tuple[0], [day, index * 2])}
                 className={`${classes.box} ${classes[tuple[0]]}`}
               >
                 <span className={classes.minutes}>:00</span>
               </div>
               <div
-                onClick={() => handleClick(timelineType, tuple[1], index * 2 + 1)}
+                onClick={() => handleClick(timelineType, tuple[1], [day, index * 2 + 1])}
                 className={`${classes.box} ${classes[tuple[1]]}`}
               >
                 <span className={classes.minutes}>:30</span>
