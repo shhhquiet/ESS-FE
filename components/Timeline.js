@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
 // import { useSpring, animated } from 'react-spring';
-
+import businessHours from '../utils/businessHours';
 import * as vars from '../utils/jssVariables';
 
 // import { timeMap } from '../utils/timeMap';
-
-const businessHours = [9, 10, 11, 12, 1, 2, 3, 4, 5];
 
 const styledBy = (property, mapping) => props => mapping[props[property]];
 
@@ -152,7 +150,7 @@ export default function Timeline({
             <div className={classes.twoBoxes}>
               <div className={classes.hours}>{businessHours[index]}</div>
 
-              {/* This PhD level math reflattens the array for return to the backend */}
+              {/* This PhD level math helps reflatten the array for return to the backend */}
               <div
                 onClick={() => handleClick(timelineType, tuple[0], [day, index * 2])}
                 className={`${classes.box} ${classes[tuple[0]]}`}

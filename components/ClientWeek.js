@@ -2,8 +2,7 @@ import React from 'react';
 
 import Timeline from './Timeline';
 
-const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesay', 'Thursday', 'Friday', 'Saturday'];
-
+import days from '../utils/days';
 export default function Week({
   slotsCollection,
   onClear,
