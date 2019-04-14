@@ -1,4 +1,4 @@
-businessHoursMap = {
+const businessHoursMap = {
   '9:00': 0,
   '9:30': 1,
   '10:00': 2,
