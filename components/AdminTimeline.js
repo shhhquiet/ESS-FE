@@ -18,7 +18,7 @@ const useStyles = makeStyles({
   adminTimeline: {
     display: 'flex',
     flexDirection: 'column',
-    width: '14%',
+    width: '300px',
     border: `1px solid ${vars.timelineBorderColor}`,
     margin: '0 2rem 2rem 2rem',
     borderRadius: '3px',
@@ -32,22 +32,38 @@ const useStyles = makeStyles({
   halfHour: {
     display: 'flex',
     justifyContent: 'center',
-    padding: '20px',
+    height: '5.2vh',
     '&:not(:last-child)': {
-      borderBottom: `1px dotted ${vars.timelineBorderColor}`
+      borderBottom: `1px solid ${vars.timelineBorderColorLight}`
     }
   },
   lesson: {
-    flex: '1 1 auto'
+    flex: '1 1',
+    fontSize: '1.4rem',
+    color: vars.timeColorLight,
+    fontWeight: 200,
+    padding: '0 0 0 15px'
   },
   Tiffani: {
-    backgroundColor: 'red'
+    backgroundColor: '#fd3a3a',
+    fontWeight: 400,
+    fontSize: '1rem',
+    borderBottom: 'none',
+    color: vars.timeColorWhite
   },
   Lisa: {
-      backgroundColor: 'blue'
+    backgroundColor: '#6262ff',
+    fontWeight: 400,
+    fontSize: '1rem',
+    borderBottom: 'none',
+    color: vars.timeColorWhite
   },
   Allison: {
-      backgroundColor: 'green'
+    backgroundColor: '#1bb91b',
+    fontWeight: 400,
+    fontSize: '1rem',
+    borderBottom: 'none',
+    color: vars.timeColorWhite
   }
 });
 
@@ -88,21 +104,27 @@ export default function AdminTimeline({ slots, day, ...props }) {
                   hour[0].map(lesson => {
                     return (
                       <div className={`${classes.lesson} ${classes[lesson.instructor]}`}>
-                        {lesson.student}
+                        <div>{lesson.student}</div>
+                        <div style={{fontSize: '.8rem'}}>{lesson.studentAge}</div>
                       </div>
                     );
                   })
                 ) : (
-                  <div>00</div>
+                  <div className={classes.lesson}>{`${businessHours[index]}:00`}</div>
                 )}
               </div>
               <div className={classes.halfHour}>
                 {hour[1].length > 0 ? (
                   hour[1].map(lesson => {
-                    return <div>{lesson.student}</div>;
+                    return (
+                      <div className={`${classes.lesson} ${classes[lesson.instructor]}`}>
+                        <div>{lesson.student}</div>
+                        <div style={{fontSize: '.8rem'}}>{lesson.studentAge}</div>}
+                      </div>
+                    );
                   })
                 ) : (
-                  <div>30</div>
+                  <div className={classes.lesson}>{`${businessHours[index]}:30`}</div>
                 )}
               </div>
             </div>
