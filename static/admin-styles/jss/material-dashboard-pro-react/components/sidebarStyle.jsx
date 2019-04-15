@@ -18,16 +18,6 @@ import {
 } from '../../material-dashboard-pro-react';
 
 const sidebarStyle = theme => ({
-	drawerPaperRTL: {
-		[theme.breakpoints.up('md')]: {
-			left: 'auto !important',
-			right: '0 !important',
-		},
-		[theme.breakpoints.down('sm')]: {
-			left: '0  !important',
-			right: 'auto !important',
-		},
-	},
 	drawerPaper: {
 		border: 'none',
 		position: 'fixed',
@@ -134,11 +124,7 @@ const sidebarStyle = theme => ({
 		marginTop: '7px',
 		color: 'inherit',
 	},
-	logoMiniRTL: {
-		float: 'right',
-		marginRight: '30px',
-		marginLeft: '26px',
-	},
+
 	logoNormal: {
 		...defaultFont,
 		transition: 'all 300ms linear',
@@ -156,16 +142,12 @@ const sidebarStyle = theme => ({
 			color: 'inherit',
 		},
 	},
-	logoNormalRTL: {
-		textAlign: 'right',
-	},
+
 	logoNormalSidebarMini: {
 		opacity: '0',
 		transform: 'translate3d(-25px, 0, 0)',
 	},
-	logoNormalSidebarMiniRTL: {
-		transform: 'translate3d(25px, 0, 0)',
-	},
+
 	img: {
 		width: '35px',
 		verticalAlign: 'middle',
@@ -245,11 +227,7 @@ const sidebarStyle = theme => ({
 		verticalAlign: 'middle',
 		opacity: '0.8',
 	},
-	itemIconRTL: {
-		float: 'right',
-		marginLeft: '15px',
-		marginRight: '1px',
-	},
+
 	itemText: {
 		color: 'inherit',
 		...defaultFont,
@@ -271,17 +249,12 @@ const sidebarStyle = theme => ({
 	userItemText: {
 		lineHeight: '22px',
 	},
-	itemTextRTL: {
-		marginRight: '45px',
-		textAlign: 'right',
-	},
+
 	itemTextMini: {
 		transform: 'translate3d(-25px, 0, 0)',
 		opacity: '0',
 	},
-	itemTextMiniRTL: {
-		transform: 'translate3d(25px, 0, 0) !important',
-	},
+
 	collapseList: {
 		marginTop: '0',
 	},
@@ -330,11 +303,7 @@ const sidebarStyle = theme => ({
 		transition: 'transform 300ms ease 0s, opacity 300ms ease 0s',
 		fontSize: '14px',
 	},
-	collapseItemMiniRTL: {
-		float: 'right',
-		marginLeft: '30px',
-		marginRight: '1px',
-	},
+
 	collapseItemText: {
 		color: 'inherit',
 		...defaultFont,
@@ -347,12 +316,7 @@ const sidebarStyle = theme => ({
 		transition: 'transform 300ms ease 0s, opacity 300ms ease 0s',
 		fontSize: '14px',
 	},
-	collapseItemTextRTL: {
-		textAlign: 'right',
-	},
-	collapseItemTextMiniRTL: {
-		transform: 'translate3d(25px, 0, 0) !important',
-	},
+
 	collapseItemTextMini: {
 		transform: 'translate3d(-25px, 0, 0)',
 		opacity: '0',
@@ -374,10 +338,7 @@ const sidebarStyle = theme => ({
 	userCaret: {
 		marginTop: '10px',
 	},
-	caretRTL: {
-		left: '11px',
-		right: 'auto',
-	},
+
 	caretActive: {
 		transform: 'rotate(180deg)',
 	},
@@ -510,11 +471,7 @@ const sidebarStyle = theme => ({
 		marginLeft: '23px',
 		...boxShadow,
 	},
-	photoRTL: {
-		float: 'right',
-		marginLeft: '12px',
-		marginRight: '24px',
-	},
+
 	avatarImg: {
 		width: '100%',
 		verticalAlign: 'middle',

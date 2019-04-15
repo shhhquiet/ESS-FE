@@ -9,10 +9,7 @@ const customTabsStyle = theme => ({
 		fontSize: '14px',
 		color: whiteColor,
 	},
-	cardTitleRTL: {
-		float: 'right',
-		padding: '10px 0px 10px 10px !important',
-	},
+
 	displayNone: {
 		display: 'none',
 	},
@@ -21,9 +18,7 @@ const customTabsStyle = theme => ({
 		display: 'flex',
 		flexWrap: 'wrap',
 	},
-	tabsContainerRTL: {
-		float: 'right',
-	},
+
 	tabIcon: {
 		width: '24px',
 		height: '24px',

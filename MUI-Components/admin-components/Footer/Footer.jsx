@@ -10,7 +10,7 @@ import ListItem from '@material-ui/core/ListItem';
 import footerStyle from 'assets/jss/material-dashboard-pro-react/components/footerStyle';
 
 function Footer({ ...props }) {
-	const { classes, fluid, white, rtlActive } = props;
+	const { classes, fluid, white } = props;
 	var container = cx({
 		[classes.container]: !fluid,
 		[classes.containerFluid]: fluid,
@@ -68,7 +68,6 @@ Footer.propTypes = {
 	classes: PropTypes.object.isRequired,
 	fluid: PropTypes.bool,
 	white: PropTypes.bool,
-	rtlActive: PropTypes.bool,
 };
 
 export default withStyles(footerStyle)(Footer);

@@ -167,9 +167,7 @@ const customDropdownStyle = theme => ({
 			...roseBoxShadow,
 		},
 	},
-	dropdownItemRTL: {
-		textAlign: 'right',
-	},
+
 	dropdownDividerItem: {
 		margin: '5px 0',
 		backgroundColor: 'rgba(' + hexToRgb(blackColor) + ', 0.12)',
@@ -197,9 +195,7 @@ const customDropdownStyle = theme => ({
 	caretDropup: {
 		transform: 'rotate(180deg)',
 	},
-	caretRTL: {
-		marginRight: '4px',
-	},
+
 	dropdownHeader: {
 		display: 'block',
 		padding: '0.1875rem 1.25rem',

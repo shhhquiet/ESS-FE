@@ -115,7 +115,7 @@ CustomTabs.propTypes = {
 			tabContent: PropTypes.node.isRequired,
 		})
 	),
-	rtlActive: PropTypes.bool,
+
 	plainTabs: PropTypes.bool,
 };
 
