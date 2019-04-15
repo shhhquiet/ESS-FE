@@ -26,9 +26,38 @@ var dashRoutes = [
 	{
 		path: '/dashboard',
 		name: 'Dashboard',
-		rtlName: 'لوحة القيادة',
-		// icon: DashboardIcon,
+		//icon: DashboardIcon,
 		// component: Dashboard,
-		// layout: "/admin"
+		layout: '/admin',
+	},
+	{
+		path: '/schedule',
+		name: 'Schedule',
+		layout: '/admin',
+	},
+	{
+		path: '/clients',
+		name: 'Clients',
+		layout: '/admin',
+	},
+	{
+		path: '/instructors',
+		name: 'Instructors',
+		layout: '/admin',
+	},
+	{
+		path: '/reports',
+		name: 'Reports',
+		layout: '/admin',
+	},
+	{
+		path: '/reviews',
+		name: 'Reviews',
+		layout: '/admin',
+	},
+	{
+		path: '/mail',
+		name: 'Mail',
+		layout: '/admin',
 	},
 ];

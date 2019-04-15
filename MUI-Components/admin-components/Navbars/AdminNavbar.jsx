@@ -20,21 +20,16 @@ import Button from '../CustomButtons/Button.jsx';
 import adminNavbarStyle from '../../../static/admin-styles/jss/material-dashboard-pro-react/components/adminNavbarStyle.jsx';
 
 function AdminNavbar({ ...props }) {
-	const { classes, color, rtlActive, brandText } = props;
+	const { classes, color, brandText } = props;
 	const appBarClasses = cx({
 		[' ' + classes[color]]: color,
 	});
-	const sidebarMinimize =
-		classes.sidebarMinimize +
-		' ' +
-		cx({
-			[classes.sidebarMinimizeRTL]: rtlActive,
-		});
+
 	return (
 		<AppBar className={classes.appBar + appBarClasses}>
 			<Toolbar className={classes.container}>
 				<Hidden smDown implementation='css'>
-					<div className={sidebarMinimize}>
+					<div className={classes.sidebarMinimize}>
 						{props.miniActive ? (
 							<Button justIcon round color='white' onClick={props.sidebarMinimize}>
 								<ViewList className={classes.sidebarMiniIcon} />
@@ -53,7 +48,7 @@ function AdminNavbar({ ...props }) {
 					</Button>
 				</div>
 				<Hidden smDown implementation='css'>
-					<AdminNavbarLinks rtlActive={rtlActive} />
+					<AdminNavbarLinks />
 				</Hidden>
 				<Hidden mdUp implementation='css'>
 					<Button
@@ -74,7 +69,7 @@ function AdminNavbar({ ...props }) {
 AdminNavbar.propTypes = {
 	classes: PropTypes.object.isRequired,
 	color: PropTypes.oneOf([ 'primary', 'info', 'success', 'warning', 'danger' ]),
-	rtlActive: PropTypes.bool,
+
 	brandText: PropTypes.string,
 };
 

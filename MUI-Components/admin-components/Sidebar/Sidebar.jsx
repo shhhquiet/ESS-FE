@@ -103,7 +103,7 @@ class Sidebar extends React.Component {
 	}
 	// this function creates the links and collapses that appear in the sidebar (left menu)
 	createLinks = routes => {
-		const { classes, color, rtlActive } = this.props;
+		const { classes, color } = this.props;
 		return routes.map((prop, key) => {
 			if (prop.redirect) {
 				return null;
@@ -122,35 +122,12 @@ class Sidebar extends React.Component {
 					' ' +
 					cx({
 						[classes.itemTextMini]: this.props.miniActive && this.state.miniActive,
-						[classes.itemTextMiniRTL]: rtlActive && this.props.miniActive && this.state.miniActive,
-						[classes.itemTextRTL]: rtlActive,
 					});
 				const collapseItemText =
 					classes.collapseItemText +
 					' ' +
 					cx({
 						[classes.collapseItemTextMini]: this.props.miniActive && this.state.miniActive,
-						[classes.collapseItemTextMiniRTL]:
-							rtlActive && this.props.miniActive && this.state.miniActive,
-						[classes.collapseItemTextRTL]: rtlActive,
-					});
-				const itemIcon =
-					classes.itemIcon +
-					' ' +
-					cx({
-						[classes.itemIconRTL]: rtlActive,
-					});
-				const caret =
-					classes.caret +
-					' ' +
-					cx({
-						[classes.caretRTL]: rtlActive,
-					});
-				const collapseItemMini =
-					classes.collapseItemMini +
-					' ' +
-					cx({
-						[classes.collapseItemMiniRTL]: rtlActive,
 					});
 				return (
 					<ListItem
@@ -169,17 +146,19 @@ class Sidebar extends React.Component {
 						>
 							<div className={navLinkClasses}>
 								{prop.icon !== undefined ? typeof prop.icon === 'string' ? (
-									<Icon className={itemIcon}>{prop.icon}</Icon>
+									<Icon className={classes.itemIcon}>{prop.icon}</Icon>
 								) : (
-									<prop.icon className={itemIcon} />
+									<prop.icon className={classes.itemIcon} />
 								) : (
-									<span className={collapseItemMini}>{rtlActive ? prop.rtlMini : prop.mini}</span>
+									<span className={classes.collapseItemMini}>{prop.mini}</span>
 								)}
 								<ListItemText
-									primary={rtlActive ? prop.rtlName : prop.name}
+									primary={prop.name}
 									secondary={
 										<b
-											className={caret + ' ' + (this.state[prop.state] ? classes.caretActive : '')}
+											className={
+												classes.caret + ' ' + (this.state[prop.state] ? classes.caretActive : '')
+											}
 										/>
 									}
 									disableTypography={true}
@@ -204,12 +183,7 @@ class Sidebar extends React.Component {
 				cx({
 					[' ' + classes[color]]: this.activeRoute(prop.path),
 				});
-			const collapseItemMini =
-				classes.collapseItemMini +
-				' ' +
-				cx({
-					[classes.collapseItemMiniRTL]: rtlActive,
-				});
+			const collapseItemMini = classes.collapseItemMini;
 			const navLinkClasses =
 				classes.itemLink +
 				' ' +
@@ -221,24 +195,14 @@ class Sidebar extends React.Component {
 				' ' +
 				cx({
 					[classes.itemTextMini]: this.props.miniActive && this.state.miniActive,
-					[classes.itemTextMiniRTL]: rtlActive && this.props.miniActive && this.state.miniActive,
-					[classes.itemTextRTL]: rtlActive,
 				});
 			const collapseItemText =
 				classes.collapseItemText +
 				' ' +
 				cx({
 					[classes.collapseItemTextMini]: this.props.miniActive && this.state.miniActive,
-					[classes.collapseItemTextMiniRTL]:
-						rtlActive && this.props.miniActive && this.state.miniActive,
-					[classes.collapseItemTextRTL]: rtlActive,
 				});
-			const itemIcon =
-				classes.itemIcon +
-				' ' +
-				cx({
-					[classes.itemIconRTL]: rtlActive,
-				});
+
 			return (
 				<ListItem
 					key={key}
@@ -255,14 +219,14 @@ class Sidebar extends React.Component {
 							)}
 						>
 							{prop.icon !== undefined ? typeof prop.icon === 'string' ? (
-								<Icon className={itemIcon}>{prop.icon}</Icon>
+								<Icon className={classes.itemIcon}>{prop.icon}</Icon>
 							) : (
-								<prop.icon className={itemIcon} />
+								<prop.icon className={classes.itemIcon} />
 							) : (
-								<span className={collapseItemMini}>{rtlActive ? prop.rtlMini : prop.mini}</span>
+								<span className={collapseItemMini}>{prop.mini}</span>
 							)}
 							<ListItemText
-								primary={rtlActive ? prop.rtlName : prop.name}
+								primary={prop.name}
 								disableTypography={true}
 								className={cx(
 									{ [itemText]: prop.icon !== undefined },
@@ -276,23 +240,18 @@ class Sidebar extends React.Component {
 		});
 	};
 	render() {
-		const { classes, logo, image, logoText, routes, bgColor, rtlActive } = this.props;
+		const { classes, logo, image, logoText, routes, bgColor } = this.props;
 		const itemText =
 			classes.itemText +
 			' ' +
 			cx({
 				[classes.itemTextMini]: this.props.miniActive && this.state.miniActive,
-				[classes.itemTextMiniRTL]: rtlActive && this.props.miniActive && this.state.miniActive,
-				[classes.itemTextRTL]: rtlActive,
 			});
 		const collapseItemText =
 			classes.collapseItemText +
 			' ' +
 			cx({
 				[classes.collapseItemTextMini]: this.props.miniActive && this.state.miniActive,
-				[classes.collapseItemTextMiniRTL]:
-					rtlActive && this.props.miniActive && this.state.miniActive,
-				[classes.collapseItemTextRTL]: rtlActive,
 			});
 		const userWrapperClass =
 			classes.user +
@@ -300,27 +259,9 @@ class Sidebar extends React.Component {
 			cx({
 				[classes.whiteAfter]: bgColor === 'white',
 			});
-		const caret =
-			classes.caret +
-			' ' +
-			cx({
-				[classes.caretRTL]: rtlActive,
-			});
-		const collapseItemMini =
-			classes.collapseItemMini +
-			' ' +
-			cx({
-				[classes.collapseItemMiniRTL]: rtlActive,
-			});
-		const photo =
-			classes.photo +
-			' ' +
-			cx({
-				[classes.photoRTL]: rtlActive,
-			});
 		var user = (
 			<div className={userWrapperClass}>
-				<div className={photo}>
+				<div className={classes.photo}>
 					<img src={avatar} className={classes.avatarImg} alt='...' />
 				</div>
 				<List className={classes.list}>
@@ -335,7 +276,7 @@ class Sidebar extends React.Component {
 								secondary={
 									<b
 										className={
-											caret +
+											classes.caret +
 											' ' +
 											classes.userCaret +
 											' ' +
@@ -351,9 +292,9 @@ class Sidebar extends React.Component {
 							<List className={classes.list + ' ' + classes.collapseList}>
 								<ListItem className={classes.collapseItem}>
 									<NavLink to='#' className={classes.itemLink + ' ' + classes.userCollapseLinks}>
-										<span className={collapseItemMini}>{rtlActive ? 'مع' : 'MP'}</span>
+										<span className={classes.collapseItemMini}>MP</span>
 										<ListItemText
-											primary={rtlActive ? 'ملفي' : 'My Profile'}
+											primary={'My Profile'}
 											disableTypography={true}
 											className={collapseItemText}
 										/>
@@ -361,9 +302,9 @@ class Sidebar extends React.Component {
 								</ListItem>
 								<ListItem className={classes.collapseItem}>
 									<NavLink to='#' className={classes.itemLink + ' ' + classes.userCollapseLinks}>
-										<span className={collapseItemMini}>{rtlActive ? 'هوع' : 'EP'}</span>
+										<span className={classes.collapseItemMini}>EP</span>
 										<ListItemText
-											primary={rtlActive ? 'تعديل الملف الشخصي' : 'Edit Profile'}
+											primary={'Edit Profile'}
 											disableTypography={true}
 											className={collapseItemText}
 										/>
@@ -371,9 +312,9 @@ class Sidebar extends React.Component {
 								</ListItem>
 								<ListItem className={classes.collapseItem}>
 									<NavLink to='#' className={classes.itemLink + ' ' + classes.userCollapseLinks}>
-										<span className={collapseItemMini}>{rtlActive ? 'و' : 'S'}</span>
+										<span className={classes.collapseItemMini}>S</span>
 										<ListItemText
-											primary={rtlActive ? 'إعدادات' : 'Settings'}
+											primary={'Settings'}
 											disableTypography={true}
 											className={collapseItemText}
 										/>
@@ -392,16 +333,8 @@ class Sidebar extends React.Component {
 			' ' +
 			cx({
 				[classes.logoNormalSidebarMini]: this.props.miniActive && this.state.miniActive,
-				[classes.logoNormalSidebarMiniRTL]:
-					rtlActive && this.props.miniActive && this.state.miniActive,
-				[classes.logoNormalRTL]: rtlActive,
 			});
-		const logoMini =
-			classes.logoMini +
-			' ' +
-			cx({
-				[classes.logoMiniRTL]: rtlActive,
-			});
+
 		const logoClasses =
 			classes.logo +
 			' ' +
@@ -410,7 +343,7 @@ class Sidebar extends React.Component {
 			});
 		var brand = (
 			<div className={logoClasses}>
-				<a href='#' className={logoMini}>
+				<a href='#' className={classes.logoMini}>
 					<img src={logo} alt='logo' className={classes.img} />
 				</a>
 				<div className={logoNormal}>{logoText}</div>
@@ -421,7 +354,6 @@ class Sidebar extends React.Component {
 			' ' +
 			cx({
 				[classes.drawerPaperMini]: this.props.miniActive && this.state.miniActive,
-				[classes.drawerPaperRTL]: rtlActive,
 			});
 		const sidebarWrapper =
 			classes.sidebarWrapper +
@@ -436,7 +368,7 @@ class Sidebar extends React.Component {
 				<Hidden mdUp implementation='css'>
 					<Drawer
 						variant='temporary'
-						anchor={rtlActive ? 'left' : 'right'}
+						anchor={'right'}
 						open={this.props.open}
 						classes={{
 							paper: drawerPaper + ' ' + classes[bgColor + 'Background'],
@@ -450,7 +382,7 @@ class Sidebar extends React.Component {
 						<SidebarWrapper
 							className={sidebarWrapper}
 							user={user}
-							headerLinks={<AdminNavbarLinks rtlActive={rtlActive} />}
+							headerLinks={<AdminNavbarLinks />}
 							links={links}
 						/>
 						{image !== undefined ? (
@@ -465,7 +397,7 @@ class Sidebar extends React.Component {
 					<Drawer
 						onMouseOver={() => this.setState({ miniActive: false })}
 						onMouseOut={() => this.setState({ miniActive: true })}
-						anchor={rtlActive ? 'right' : 'left'}
+						anchor={'left'}
 						variant='permanent'
 						open
 						classes={{
@@ -494,7 +426,7 @@ Sidebar.defaultProps = {
 Sidebar.propTypes = {
 	classes: PropTypes.object.isRequired,
 	bgColor: PropTypes.oneOf([ 'white', 'black', 'blue' ]),
-	rtlActive: PropTypes.bool,
+
 	color: PropTypes.oneOf([ 'white', 'red', 'orange', 'green', 'blue', 'purple', 'rose' ]),
 	logo: PropTypes.string,
 	logoText: PropTypes.string,
