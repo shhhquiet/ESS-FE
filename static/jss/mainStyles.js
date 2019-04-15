@@ -1,26 +1,3 @@
-/*!
-
- =========================================================
- * Material Kit PRO React - v1.3.0 based on Material Kit PRO - v2.0.3
- =========================================================
-
- * Product Page: https://www.creative-tim.com/product/material-kit-pro-react
- * Copyright 2018 Creative Tim (https://www.creative-tim.com)
- * Licensed under MIT (https://github.com/creativetimofficial/ct-material-kit-pro-react/blob/master/LICENSE.md)
-
- =========================================================
-
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
- */
-
-// ##############################
-// // // Function that converts from hex color to rgb color
-// // // Example: input = #9c27b0 => output = 156, 39, 176
-// // // Example: input = 9c27b0 => output = 156, 39, 176
-// // // Example: input = #999 => output = 153, 153, 153
-// // // Example: input = 999 => output = 153, 153, 153
-// #############################
 const hexToRgb = input => {
 	input = input + '';
 	input = input.replace('#', '');
@@ -41,14 +18,26 @@ const hexToRgb = input => {
 	return parseInt(first, 16) + ', ' + parseInt(second, 16) + ', ' + parseInt(last, 16);
 };
 
-// ##############################
-// // // Variables - Styles that are used on more than one component
-// #############################
-
 const drawerWidth = 260;
+
+const drawerMiniWidth = 80;
 
 const transition = {
 	transition: 'all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1)',
+};
+
+const adminContainerFluid = {
+	paddingRight: '15px',
+	paddingLeft: '15px',
+	marginRight: 'auto',
+	marginLeft: 'auto',
+	'&:before,&:after': {
+		display: 'table',
+		content: '" "',
+	},
+	'&:after': {
+		clear: 'both',
+	},
 };
 
 const containerFluid = {
@@ -58,6 +47,30 @@ const containerFluid = {
 	marginLeft: 'auto',
 	width: '100%',
 };
+
+const adminContainer = {
+	paddingRight: '15px',
+	paddingLeft: '15px',
+	marginRight: 'auto',
+	marginLeft: 'auto',
+	'@media (min-width: 768px)': {
+		width: '750px',
+	},
+	'@media (min-width: 992px)': {
+		width: '970px',
+	},
+	'@media (min-width: 1200px)': {
+		width: '1170px',
+	},
+	'&:before,&:after': {
+		display: 'table',
+		content: '" "',
+	},
+	'&:after': {
+		clear: 'both',
+	},
+};
+
 const container = {
 	...containerFluid,
 	'@media (min-width: 576px)': {
@@ -74,96 +87,58 @@ const container = {
 	},
 };
 
-const card = {
-	display: 'inline-block',
-	position: 'relative',
-	width: '100%',
-	margin: '25px 0',
-	boxShadow: '0 1px 4px 0 rgba(' + hexToRgb(blackColor) + ', 0.14)',
-	borderRadius: '3px',
-	color: 'rgba(' + hexToRgb(blackColor) + ', 0.87)',
-	background: whiteColor,
-};
-
 const defaultFont = {
-	fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-	fontWeight: '300',
+	fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
+	fontWeight: '500',
 	lineHeight: '1.5em',
 };
 
-const primaryColor = [ '#9c27b0', '#ab47bc', '#8e24aa', '#af2cc5', '#e1bee7', '#ba68c8' ];
+const primaryColor = [ '#9c27b0', '#ab47bc', '#8e24aa', '#af2cc5', '#7b1fa2' ];
 const secondaryColor = [ '#fafafa' ];
 const warningColor = [
 	'#ff9800',
 	'#ffa726',
 	'#fb8c00',
 	'#ffa21a',
-	'#fcf8e3',
+	'#f57c00',
 	'#faf2cc',
-	'#ffe0b2',
-	'#ffb74d',
+	'#fcf8e3',
 ];
-const dangerColor = [
-	'#f44336',
-	'#ef5350',
-	'#e53935',
-	'#f55a4e',
-	'#f2dede',
-	'#ebcccc',
-	'ef9a9a',
-	'#ef5350',
-];
+const dangerColor = [ '#f44336', '#ef5350', '#e53935', '#f55a4e', '#d32f2f', '#ebcccc', '#f2dede' ];
 const successColor = [
 	'#4caf50',
 	'#66bb6a',
 	'#43a047',
 	'#5cb860',
-	'#dff0d8',
+	'#388e3c',
 	'#d0e9c6',
-	'#a5d6a7',
-	'#66bb6a',
+	'#dff0d8',
 ];
-const infoColor = [
-	'#00acc1',
-	'#26c6da',
-	'#00acc1',
-	'#00d3ee',
-	'#d9edf7',
-	'#c4e3f3',
-	'#b2ebf2',
-	'#4dd0e1',
-];
-const roseColor = [ '#e91e63', '#ec407a', '#d81b60', '#f8bbd0', '#f06292' ];
+const infoColor = [ '#00acc1', '#26c6da', '#00acc1', '#00d3ee', '#0097a7', '#c4e3f3', '#d9edf7' ];
+const roseColor = [ '#e91e63', '#ec407a', '#d81b60', '#eb3573', '#c2185b' ];
 const grayColor = [
 	'#999',
-	'#3C4858',
-	'#eee',
-	'#343434',
-	'#585858',
-	'#232323',
-	'#ddd',
-	'#6c757d',
-	'#333',
-	'#212121',
 	'#777',
+	'#3C4858',
+	'#AAAAAA',
 	'#D2D2D2',
-	'#AAA',
-	'#495057',
-	'#e5e5e5',
-	'#555',
-	'#f9f9f9',
+	'#DDD',
+	'#555555',
+	'#333',
+	'#eee',
 	'#ccc',
-	'#444',
-	'#f2f2f2',
-	'#89229b',
-	'#c0c1c2',
-	'#9a9a9a',
+	'#e4e4e4',
+	'#E5E5E5',
+	'#f9f9f9',
 	'#f5f5f5',
+	'#495057',
+	'#e7e7e7',
+	'#212121',
+	'#c8c8c8',
 	'#505050',
-	'#1f1f1f',
 ];
-const whiteColor = '#FFF';
-const blackColor = '#000';
+const blackColor = '#212121';
+const whiteColor = '#fafafa';
 const twitterColor = '#55acee';
 const facebookColor = '#3b5998';
 const googleColor = '#dd4b39';
@@ -186,112 +161,109 @@ const boxShadow = {
 		hexToRgb(blackColor) +
 		', 0.2)',
 };
+
 const primaryBoxShadow = {
 	boxShadow:
-		'0 12px 20px -10px rgba(' +
-		hexToRgb(primaryColor[0]) +
-		', 0.28), 0 4px 20px 0px rgba(' +
+		'0 4px 20px 0 rgba(' +
 		hexToRgb(blackColor) +
-		', 0.12), 0 7px 8px -5px rgba(' +
+		',.14), 0 7px 10px -5px rgba(' +
 		hexToRgb(primaryColor[0]) +
-		', 0.2)',
+		',.4)',
 };
 const infoBoxShadow = {
 	boxShadow:
-		'0 12px 20px -10px rgba(' +
-		hexToRgb(infoColor[0]) +
-		', 0.28), 0 4px 20px 0px rgba(' +
+		'0 4px 20px 0 rgba(' +
 		hexToRgb(blackColor) +
-		', 0.12), 0 7px 8px -5px rgba(' +
+		',.14), 0 7px 10px -5px rgba(' +
 		hexToRgb(infoColor[0]) +
-		', 0.2)',
+		',.4)',
 };
 const successBoxShadow = {
 	boxShadow:
-		'0 12px 20px -10px rgba(' +
-		hexToRgb(successColor[0]) +
-		', 0.28), 0 4px 20px 0px rgba(' +
+		'0 4px 20px 0 rgba(' +
 		hexToRgb(blackColor) +
-		', 0.12), 0 7px 8px -5px rgba(' +
+		',.14), 0 7px 10px -5px rgba(' +
 		hexToRgb(successColor[0]) +
-		', 0.2)',
+		',.4)',
 };
 const warningBoxShadow = {
 	boxShadow:
-		'0 12px 20px -10px rgba(' +
-		hexToRgb(warningColor[0]) +
-		', 0.28), 0 4px 20px 0px rgba(' +
+		'0 4px 20px 0 rgba(' +
 		hexToRgb(blackColor) +
-		', 0.12), 0 7px 8px -5px rgba(' +
+		',.14), 0 7px 10px -5px rgba(' +
 		hexToRgb(warningColor[0]) +
-		', 0.2)',
+		',.4)',
 };
 const dangerBoxShadow = {
 	boxShadow:
-		'0 12px 20px -10px rgba(' +
-		hexToRgb(dangerColor[0]) +
-		', 0.28), 0 4px 20px 0px rgba(' +
+		'0 4px 20px 0 rgba(' +
 		hexToRgb(blackColor) +
-		', 0.12), 0 7px 8px -5px rgba(' +
+		',.14), 0 7px 10px -5px rgba(' +
 		hexToRgb(dangerColor[0]) +
-		', 0.2)',
+		',.4)',
 };
 const roseBoxShadow = {
 	boxShadow:
-		'0 4px 20px 0px rgba(' +
+		'0 4px 20px 0 rgba(' +
 		hexToRgb(blackColor) +
-		', 0.14), 0 7px 10px -5px rgba(' +
+		',.14), 0 7px 10px -5px rgba(' +
 		hexToRgb(roseColor[0]) +
-		', 0.4)',
+		',.4)',
 };
 
 const warningCardHeader = {
-	color: whiteColor,
 	background: 'linear-gradient(60deg, ' + warningColor[1] + ', ' + warningColor[2] + ')',
 	...warningBoxShadow,
 };
 const successCardHeader = {
-	color: whiteColor,
 	background: 'linear-gradient(60deg, ' + successColor[1] + ', ' + successColor[2] + ')',
 	...successBoxShadow,
 };
 const dangerCardHeader = {
-	color: whiteColor,
 	background: 'linear-gradient(60deg, ' + dangerColor[1] + ', ' + dangerColor[2] + ')',
 	...dangerBoxShadow,
 };
 const infoCardHeader = {
-	color: whiteColor,
 	background: 'linear-gradient(60deg, ' + infoColor[1] + ', ' + infoColor[2] + ')',
 	...infoBoxShadow,
 };
 const primaryCardHeader = {
-	color: whiteColor,
 	background: 'linear-gradient(60deg, ' + primaryColor[1] + ', ' + primaryColor[2] + ')',
 	...primaryBoxShadow,
 };
 const roseCardHeader = {
-	color: whiteColor,
 	background: 'linear-gradient(60deg, ' + roseColor[1] + ', ' + roseColor[2] + ')',
 	...roseBoxShadow,
 };
+
+const card = {
+	display: 'inline-block',
+	position: 'relative',
+	width: '100%',
+	margin: '25px 0',
+	boxShadow: '0 1px 4px 0 rgba(' + hexToRgb(blackColor) + ', 0.14)',
+	borderRadius: '6px',
+	color: 'rgba(' + hexToRgb(blackColor) + ', 0.87)',
+	background: whiteColor,
+};
+
 const cardActions = {
 	margin: '0 20px 10px',
 	paddingTop: '10px',
-	borderTop: '1px solid  ' + grayColor[2],
+	borderTop: '1px solid ' + grayColor[8],
 	height: 'auto',
 	...defaultFont,
 };
 
 const cardHeader = {
-	margin: '-30px 15px 0',
-	borderRadius: '3px',
+	margin: '-20px 15px 0',
+	borderRadius: '6px',
 	padding: '15px',
 };
 
 const defaultBoxShadow = {
 	border: '0',
-	borderRadius: '3px',
+	borderRadius: '6px',
 	boxShadow:
 		'0 10px 20px -12px rgba(' +
 		hexToRgb(blackColor) +
@@ -304,18 +276,61 @@ const defaultBoxShadow = {
 	transition: 'all 150ms ease 0s',
 };
 
+const tooltip = {
+	padding: '10px 15px',
+	minWidth: '130px',
+	color: whiteColor,
+	lineHeight: '1.7em',
+	background: 'rgba(' + hexToRgb(grayColor[6]) + ',0.9)',
+	border: 'none',
+	borderRadius: '3px',
+	opacity: '1!important',
+	boxShadow:
+		'0 8px 10px 1px rgba(' +
+		hexToRgb(blackColor) +
+		', 0.14), 0 3px 14px 2px rgba(' +
+		hexToRgb(blackColor) +
+		', 0.12), 0 5px 5px -3px rgba(' +
+		hexToRgb(blackColor) +
+		', 0.2)',
+	maxWidth: '200px',
+	textAlign: 'center',
+	fontFamily: '"Helvetica Neue",Helvetica,Arial,sans-serif',
+	fontSize: '12px',
+	fontStyle: 'normal',
+	fontWeight: '400',
+	textShadow: 'none',
+	textTransform: 'none',
+	letterSpacing: 'normal',
+	wordBreak: 'normal',
+	wordSpacing: 'normal',
+	wordWrap: 'normal',
+	whiteSpace: 'normal',
+	lineBreak: 'auto',
+};
+
 const title = {
-	color: grayColor[1],
+	color: grayColor[2],
 	textDecoration: 'none',
-	fontWeight: '700',
+	fontWeight: '300',
 	marginTop: '30px',
 	marginBottom: '25px',
 	minHeight: '32px',
-	fontFamily: `"Roboto Slab", "Times New Roman", serif`,
+	fontFamily: "'Montserrat', 'Helvetica', 'Arial', sans-serif",
+	'& small': {
+		color: grayColor[1],
+		fontSize: '65%',
+		fontWeight: '400',
+		lineHeight: '1',
+	},
 };
 
 const cardTitle = {
-	'&, & a': {
+	...title,
+	marginTop: '0',
+	marginBottom: '3px',
+	minHeight: 'auto',
+	'& a': {
 		...title,
 		marginTop: '.625rem',
 		marginBottom: '0.75rem',
@@ -323,15 +338,14 @@ const cardTitle = {
 	},
 };
 
+const cardSubtitle = {
+	marginTop: '-.375rem',
+};
+
 const cardLink = {
 	'& + $cardLink': {
 		marginLeft: '1.25rem',
 	},
-};
-
-const cardSubtitle = {
-	marginBottom: '0',
-	marginTop: '-.375rem',
 };
 
 const main = {
@@ -455,6 +469,7 @@ export {
 	cardHeader,
 	defaultBoxShadow,
 	title,
+	tooltip,
 	cardTitle,
 	description,
 	cardLink,
