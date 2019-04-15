@@ -19,6 +19,7 @@ import Notifications from '@material-ui/icons/Notifications';
 import Dashboard from '@material-ui/icons/Dashboard';
 import Search from '@material-ui/icons/Search';
 import Email from '@material-ui/icons/Email';
+import Add from '@material-ui/icons/Add';
 
 // core components
 import CustomInput from '../CustomInput/CustomInput.jsx';
@@ -47,7 +48,7 @@ class HeaderLinks extends React.Component {
 		});
 		return (
 			<div>
-				<CustomInput
+				{/* <CustomInput
 					formControlProps={{
 						className: classes.top + ' ' + classes.search,
 					}}
@@ -58,9 +59,9 @@ class HeaderLinks extends React.Component {
 							className: classes.searchInput,
 						},
 					}}
-				/>
+				/> */}
 				<Button color='white' aria-label='edit' justIcon round className={searchButton}>
-					<Search className={classes.headerLinksSvg + ' ' + classes.searchIcon} />
+					<Add className={classes.headerLinksSvg + ' ' + classes.searchIcon} />
 				</Button>
 				<Button
 					color='transparent'
@@ -74,6 +75,19 @@ class HeaderLinks extends React.Component {
 						<span className={classes.linkText}>Dashboard</span>
 					</Hidden>
 				</Button>
+				<Button
+					color='transparent'
+					simple
+					aria-label='Dashboard'
+					justIcon
+					className={classes.buttonLink}
+				>
+					<Email className={classes.headerLinksSvg + ' ' + classes.links} />
+					<Hidden mdUp implementation='css'>
+						<span className={classes.linkText}>Email</span>
+					</Hidden>
+				</Button>
+
 				<div className={managerClasses}>
 					<Button
 						color='transparent'
