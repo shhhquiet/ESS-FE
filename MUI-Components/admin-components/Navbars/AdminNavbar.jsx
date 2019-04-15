@@ -17,7 +17,7 @@ import ViewList from '@material-ui/icons/ViewList';
 import AdminNavbarLinks from './AdminNavbarLinks';
 import Button from '../CustomButtons/Button.jsx';
 
-import adminNavbarStyle from '../../../static/admin-styles/jss/material-dashboard-pro-react/components/adminNavbarStyle.jsx';
+import adminNavbarStyle from '../../../static/jss/component-styles/adminNavbarStyle';
 
 function AdminNavbar({ ...props }) {
 	const { classes, color, brandText } = props;

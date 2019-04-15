@@ -1,7 +1,7 @@
 import NavBar from '../../MUI-Components/admin-components/Navbars/AdminNavbar';
 import Sidebar from '../../MUI-Components/admin-components/Sidebar/Sidebar';
 import withStyles from '@material-ui/core/styles/withStyles';
-import style from '../../static/admin-styles/jss/material-dashboard-pro-react/layouts/adminStyle';
+import style from '../../static/jss/layouts/adminStyle';
 
 function Home({ classes }) {
 	return (

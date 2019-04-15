@@ -18,7 +18,7 @@ import Icon from '@material-ui/core/Icon';
 // core components
 import AdminNavbarLinks from '../Navbars/AdminNavbarLinks.jsx';
 
-import sidebarStyle from '../../../static/admin-styles/jss/material-dashboard-pro-react/components/sidebarStyle.jsx';
+import sidebarStyle from '../../../static/jss/component-styles/sidebarStyle';
 
 import avatar from '../../../static/admin-styles/img/faces/lisa1.jpg';
 

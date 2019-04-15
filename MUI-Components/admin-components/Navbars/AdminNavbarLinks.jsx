@@ -24,7 +24,7 @@ import Email from '@material-ui/icons/Email';
 import CustomInput from '../CustomInput/CustomInput.jsx';
 import Button from '../CustomButtons/Button.jsx';
 
-import adminNavbarLinksStyle from '../../../static/admin-styles/jss/material-dashboard-pro-react/components/adminNavbarLinksStyle.jsx';
+import adminNavbarLinksStyle from '../../../static/jss/component-styles/adminNavbarLinksStyle';
 
 class HeaderLinks extends React.Component {
 	state = {
