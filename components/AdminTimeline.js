@@ -18,11 +18,12 @@ const useStyles = makeStyles({
   adminTimeline: {
     display: 'flex',
     flexDirection: 'column',
-    width: '300px',
-    border: `1px solid ${vars.timelineBorderColor}`,
-    margin: '0 2rem 2rem 2rem',
-    borderRadius: '3px',
-    boxShadow: vars.timelineBoxShadow
+    flex: '1 1 auto',
+    borderRight: `1px solid ${vars.timelineBorderColorLight}`,
+
+    // '&:last-child':{
+    //   borderRight:'none'
+    // }
   },
   hour: {
     '&:not(:last-child)': {
@@ -33,20 +34,23 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     height: '5.2vh',
-    '&:not(:last-child)': {
-      borderBottom: `1px solid ${vars.timelineBorderColorLight}`
-    }
+    textAlign: 'center'
+    //TODO Implement these guide lines higher up the tree
+    // '&:not(:last-child)': {
+    //   borderBottom: `1px solid ${vars.timelineBorderColorLight}`
+    // }
   },
   lesson: {
     flex: '1 1',
     fontSize: '1.4rem',
     color: vars.timeColorLight,
     fontWeight: 200,
-    padding: '0 0 0 15px'
+    padding: '0 0 0 10px'
   },
   Tiffani: {
     backgroundColor: '#fd3a3a',
     fontWeight: 400,
+    textAlign: 'left',
     fontSize: '1rem',
     borderBottom: 'none',
     color: vars.timeColorWhite
@@ -54,6 +58,7 @@ const useStyles = makeStyles({
   Lisa: {
     backgroundColor: '#6262ff',
     fontWeight: 400,
+    textAlign: 'left',
     fontSize: '1rem',
     borderBottom: 'none',
     color: vars.timeColorWhite
@@ -61,6 +66,7 @@ const useStyles = makeStyles({
   Allison: {
     backgroundColor: '#1bb91b',
     fontWeight: 400,
+    textAlign: 'left',
     fontSize: '1rem',
     borderBottom: 'none',
     color: vars.timeColorWhite
@@ -93,8 +99,8 @@ export default function AdminTimeline({ slots, day, ...props }) {
   const tuples = arrayReduce(lessons, 2);
 
   return (
-    <div>
-      <div className={classes.day}>{day}</div>
+    <div style={{width: '100%'}}>
+      {/* <div className={classes.day}>{day}</div> */}
       <div className={classes.adminTimeline}>
         {tuples.map((hour, index) => {
           return (
