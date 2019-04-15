@@ -42,7 +42,7 @@ const useStyles = makeStyles({
     '&:not(:last-child)': {
       borderBottom: `1px solid ${vars.timelineBorderColor}`
     },
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
   minutes: {
     position: 'absolute',
