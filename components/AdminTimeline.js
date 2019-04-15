@@ -4,8 +4,8 @@ import { makeStyles } from '@material-ui/styles';
 import businessHours from '../utils/businessHours';
 import businessHoursMap from '../utils/businessHoursMap';
 import * as vars from '../utils/jssVariables';
-import { keys } from '@material-ui/core/styles/createBreakpoints';
 
+import Lesson from './Lesson';
 // import { timeMap } from '../utils/timeMap';
 
 const styledBy = (property, mapping) => props => mapping[props[property]];
@@ -19,11 +19,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     flex: '1 1 auto',
-    borderRight: `1px solid ${vars.timelineBorderColorLight}`,
-
-    // '&:last-child':{
-    //   borderRight:'none'
-    // }
+    borderRight: `1px solid ${vars.timelineBorderColorLight}`
   },
   hour: {
     '&:not(:last-child)': {
@@ -34,42 +30,17 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     height: '5.2vh',
-    textAlign: 'center'
+    textAlign: 'center',
+    position: 'relative'
     //TODO Implement these guide lines higher up the tree
     // '&:not(:last-child)': {
     //   borderBottom: `1px solid ${vars.timelineBorderColorLight}`
     // }
   },
-  lesson: {
-    flex: '1 1',
-    fontSize: '1.4rem',
+  empty: {
     color: vars.timeColorLight,
-    fontWeight: 200,
-    padding: '0 0 0 10px'
-  },
-  Tiffani: {
-    backgroundColor: '#fd3a3a',
-    fontWeight: 400,
-    textAlign: 'left',
-    fontSize: '1rem',
-    borderBottom: 'none',
-    color: vars.timeColorWhite
-  },
-  Lisa: {
-    backgroundColor: '#6262ff',
-    fontWeight: 400,
-    textAlign: 'left',
-    fontSize: '1rem',
-    borderBottom: 'none',
-    color: vars.timeColorWhite
-  },
-  Allison: {
-    backgroundColor: '#1bb91b',
-    fontWeight: 400,
-    textAlign: 'left',
-    fontSize: '1rem',
-    borderBottom: 'none',
-    color: vars.timeColorWhite
+    fontSize: '1.2rem',
+    fontWeight: 200
   }
 });
 
@@ -99,7 +70,7 @@ export default function AdminTimeline({ slots, day, ...props }) {
   const tuples = arrayReduce(lessons, 2);
 
   return (
-    <div style={{width: '100%'}}>
+    <div style={{ width: '100%' }}>
       {/* <div className={classes.day}>{day}</div> */}
       <div className={classes.adminTimeline}>
         {tuples.map((hour, index) => {
@@ -108,29 +79,19 @@ export default function AdminTimeline({ slots, day, ...props }) {
               <div className={classes.halfHour}>
                 {hour[0].length > 0 ? (
                   hour[0].map(lesson => {
-                    return (
-                      <div className={`${classes.lesson} ${classes[lesson.instructor]}`}>
-                        <div>{lesson.student}</div>
-                        <div style={{fontSize: '.8rem'}}>{lesson.studentAge}</div>
-                      </div>
-                    );
+                    return <Lesson lesson={lesson} />;
                   })
                 ) : (
-                  <div className={classes.lesson}>{`${businessHours[index]}:00`}</div>
+                  <div className={classes.empty}>{`${businessHours[index]}:00`}</div>
                 )}
               </div>
               <div className={classes.halfHour}>
                 {hour[1].length > 0 ? (
                   hour[1].map(lesson => {
-                    return (
-                      <div className={`${classes.lesson} ${classes[lesson.instructor]}`}>
-                        <div>{lesson.student}</div>
-                        <div style={{fontSize: '.8rem'}}>{lesson.studentAge}</div>}
-                      </div>
-                    );
+                    return <Lesson lesson={lesson} />;
                   })
                 ) : (
-                  <div className={classes.lesson}>{`${businessHours[index]}:30`}</div>
+                  <div className={classes.empty}>{`${businessHours[index]}:30`}</div>
                 )}
               </div>
             </div>
@@ -140,3 +101,5 @@ export default function AdminTimeline({ slots, day, ...props }) {
     </div>
   );
 }
+
+// <Lesson classes={classes} lesson={lesson}/>

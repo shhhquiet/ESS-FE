@@ -9,3 +9,6 @@ export const timelineYourAppointment = 'green';
 export const timeColor = '#3f3f3f';
 export const timeColorWhite = '#fafafa';
 export const timeColorLight = '#dcdcdc';
+export const tiffaniBackground = '#fd3a3a';
+export const lisaBackground = '#6262ff';
+export const allisonBackground = '#1bb91b';
