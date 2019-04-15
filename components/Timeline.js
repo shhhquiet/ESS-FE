@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
+// import { useSpring, animated } from 'react-spring';
+import businessHours from '../utils/businessHours';
 import * as vars from '../utils/jssVariables';
 
 // import { timeMap } from '../utils/timeMap';
-
-const businessHours = [9, 10, 11, 12, 1, 2, 3, 4, 5];
 
 const styledBy = (property, mapping) => props => mapping[props[property]];
 
@@ -41,7 +41,8 @@ const useStyles = makeStyles({
     borderRight: `1px solid ${vars.timelineBorderColor}`,
     '&:not(:last-child)': {
       borderBottom: `1px solid ${vars.timelineBorderColor}`
-    }
+    },
+    cursor: 'pointer'
   },
   minutes: {
     position: 'absolute',
@@ -83,6 +84,9 @@ export default function Timeline({
   const classes = useStyles(props);
   //* */
 
+  // const [toggle, setToggle] = useState(false);
+  // const bg = useSpring();
+
   //* We need to make a 2d array so that we can easily switch our flex-container to column when we switch to mobile */
   function arrayReduce(arr, n) {
     return arr.reduce((a, e, i) => {
@@ -94,6 +98,8 @@ export default function Timeline({
       return a;
     }, []);
   }
+
+  const tuples = arrayReduce(slots, 2);
 
   const handleClick = (type, state, slot) => {
     switch (type) {
@@ -122,7 +128,7 @@ export default function Timeline({
 
       case 'instructor schedule':
         if (state === 'booked') {
-          onClientLookup();
+          onClientLookup(slot);
         } else if (state === 'clear') {
           onAvailible(slot);
         } else {
@@ -135,8 +141,6 @@ export default function Timeline({
     }
   };
 
-  var tuples = arrayReduce(slots, 2);
-
   return (
     <div>
       <div className={classes.day}>{day}</div>
@@ -146,15 +150,15 @@ export default function Timeline({
             <div className={classes.twoBoxes}>
               <div className={classes.hours}>{businessHours[index]}</div>
 
-              {/* This PhD level math reflattens the array for return to the backend */}
+              {/* This PhD level math helps reflatten the array for return to the backend */}
               <div
-                onClick={() => handleClick(timelineType, tuple[0], index * 2)}
+                onClick={() => handleClick(timelineType, tuple[0], [day, index * 2])}
                 className={`${classes.box} ${classes[tuple[0]]}`}
               >
                 <span className={classes.minutes}>:00</span>
               </div>
               <div
-                onClick={() => handleClick(timelineType, tuple[1], index * 2 + 1)}
+                onClick={() => handleClick(timelineType, tuple[1], [day, index * 2 + 1])}
                 className={`${classes.box} ${classes[tuple[1]]}`}
               >
                 <span className={classes.minutes}>:30</span>

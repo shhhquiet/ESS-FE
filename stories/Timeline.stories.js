@@ -90,7 +90,7 @@ storiesOf('Timeline', module)
       {...actions}
     />
   ))
-  .add('forInstructorScheduled', () => (
+  .add('forInstructorSchedule', () => (
     <Timeline
       timelineType={'instructor schedule'}
       day={'Friday'}
