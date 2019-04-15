@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 import Timeline from '../components/Timeline';
-import GlobalStyle from '../utils/GlobalStyle';
 
 export const defaultSlots = new Array(18).fill('clear');
 
@@ -28,9 +28,73 @@ export const withMixedSlots = [
   'booked',
   'clear'
 ];
+export const withClientMixedSlots = [
+  ...defaultSlots.slice(0, 8),
+  'yourAppointment',
+  'yourAppointment',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked'
+];
+export const withInstructorAvailibleSlots = [
+  ...defaultSlots.slice(0, 10),
+  'availible',
+  'availible',
+  'availible',
+  'availible',
+  'availible',
+  'availible',
+  'availible',
+  'availible'
+];
+export const withInstructorScheduleSlots = [
+  ...defaultSlots.slice(0, 10),
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked'
+];
+
+export const actions = {
+  onClear: action('onClear'),
+  onAlertUnavailible: action('onAlertUnavailible'),
+  onAvailible: action('onAvailible'),
+  onBooked: action('onBooked'),
+  onClientLookup: action('onClientLookup')
+};
 
 storiesOf('Timeline', module)
-  .add('default', () => <Timeline slots={defaultSlots} />)
-  .add('withBookedSlots', () => <Timeline slots={withBookedSlots} />)
-  .add('withAvailibleSlots', () => <Timeline slots={withAvailibleSlots} />)
-  .add('withMixedSlots', () => <Timeline slots={withMixedSlots} />);
+  .add('default', () => <Timeline day={'Tuesday'} slots={defaultSlots} {...actions} />)
+  .add('withBookedSlots', () => <Timeline day={'Tuesday'} slots={withBookedSlots} {...actions} />)
+  .add('withAvailibleSlots', () => (
+    <Timeline day={'Tuesday'} slots={withAvailibleSlots} {...actions} />
+  ))
+  .add('withMixedSlots', () => <Timeline day={'Tuesday'} slots={withMixedSlots} {...actions} />)
+  .add('forClient', () => (
+    <Timeline timelineType={'client'} day={'Wednesay'} slots={withClientMixedSlots} {...actions} />
+  ))
+  .add('forInstructorAvailibility', () => (
+    <Timeline
+      timelineType={'instructor availibility'}
+      day={'Thursday'}
+      slots={withInstructorAvailibleSlots}
+      {...actions}
+    />
+  ))
+  .add('forInstructorSchedule', () => (
+    <Timeline
+      timelineType={'instructor schedule'}
+      day={'Friday'}
+      slots={withInstructorScheduleSlots}
+      {...actions}
+    />
+  ));

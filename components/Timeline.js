@@ -1,50 +1,93 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
+// import { useSpring, animated } from 'react-spring';
+import businessHours from '../utils/businessHours';
+import * as vars from '../utils/jssVariables';
 
-import { timeMap } from '../utils/timeMap';
+// import { timeMap } from '../utils/timeMap';
+
+const styledBy = (property, mapping) => props => mapping[props[property]];
 
 const useStyles = makeStyles({
+  day: {
+    margin: '2rem 0 0 2rem',
+    display: 'inline'
+  },
+  numbers: {
+    display: 'flex'
+  },
   timeline: {
     display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'column',
     alignContent: 'center',
-    height: '200px'
+    border: `1px solid ${vars.timelineBorderColor}`,
+    margin: '0 2rem 2rem 2rem',
+    borderRadius: '3px',
+    boxShadow: vars.timelineBoxShadow
+  },
+  hours: {
+    textAlign: 'center',
+    fontSize: '2rem',
+    fontWeight: 200,
+    borderBottom: `1px solid ${vars.timelineBorderColor}`
+  },
+  twoBoxes: {
+    flex: '1 1 auto'
   },
 
-  twoBoxes: {
-    color: 'red',
-    '&:first-child': {
-      borderLeft: '1px solid black'
-    }
-  },
   box: {
+    flex: '1 1 auto',
+    position: 'relative',
     height: '90px',
-    width: '150px',
-    border: '1px solid black',
-    borderLeft: 'none',
+    borderRight: `1px solid ${vars.timelineBorderColor}`,
     '&:not(:last-child)': {
-      borderBottom: '2px dotted black'
+      borderBottom: `1px solid ${vars.timelineBorderColor}`
     },
-    '&:nth-child(2)': {
-      borderTop: 'none'
-    }
+    cursor: 'pointer',
+  },
+  minutes: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    fontSize: '1.8rem',
+    fontWeight: '200',
+    color: vars.timeColor
   },
   clear: {
-    backgroundColor: 'gray'
+    backgroundColor: vars.timelineClear
   },
   booked: {
-    backgroundColor: 'pink'
+    backgroundColor: vars.timelineBooked
   },
   availible: {
-    backgroundColor: 'blue'
+    backgroundColor: vars.timelineAvailible
+  },
+  yourAppointment: {
+    backgroundColor: vars.timelineYourAppointment
   }
 });
 
-export default function Timeline({ slots }) {
-  const classes = useStyles();
+export default function Timeline({
+  slots,
+  day,
+  timelineType,
+  onClear,
+  onAlertUnavailible,
+  onAvailible,
+  onBooked,
+  onClientLookup,
+  ...props
+}) {
+  //*I don't know why this has to be destructured from this scope but it does.
+  //* Passing props in as an argument to useStyles is mandatory
+  const { color } = props;
+  const classes = useStyles(props);
+  //* */
 
-  //* We need to unflatten the array so that we can easily switch our flex-container to column when we switch to mobile */
+  // const [toggle, setToggle] = useState(false);
+  // const bg = useSpring();
+
+  //* We need to make a 2d array so that we can easily switch our flex-container to column when we switch to mobile */
   function arrayReduce(arr, n) {
     return arr.reduce((a, e, i) => {
       if (i % n == 0) {
@@ -56,18 +99,74 @@ export default function Timeline({ slots }) {
     }, []);
   }
 
-  var tuples = arrayReduce(slots, 2);
+  const tuples = arrayReduce(slots, 2);
+
+  const handleClick = (type, state, slot) => {
+    switch (type) {
+      case 'client':
+        if (state === 'clear') {
+          onBooked(slot);
+        } else if (state === 'booked') {
+          onAlertUnavailible();
+        } else if (state === 'yourAppointment') {
+          onClear(slot);
+          console.log('Your Apointment has been Cancelled');
+        } else {
+          console.log('weewppzzz');
+        }
+        break;
+
+      case 'instructor availibility':
+        if (state === 'clear') {
+          onAvailible(slot);
+        } else if (state === 'availible') {
+          onClear(slot);
+        } else {
+          console.log('ruh-roh');
+        }
+        break;
+
+      case 'instructor schedule':
+        if (state === 'booked') {
+          onClientLookup(slot);
+        } else if (state === 'clear') {
+          onAvailible(slot);
+        } else {
+          console.log('Looks like Laurnado blew through here');
+        }
+        break;
+
+      default:
+        console.log('default');
+    }
+  };
 
   return (
-    <div className={classes.timeline}>
-      {tuples.map((tuple, index) => {
-        return (
-          <div className={`${classes.twoBoxes}`}>
-            <div className={`${classes.box} ${classes[tuple[0]]}`}>{timeMap[index][0]}</div>
-            <div className={`${classes.box} ${classes[tuple[1]]}`}>{timeMap[index][1]}</div>
-          </div>
-        );
-      })}
+    <div>
+      <div className={classes.day}>{day}</div>
+      <div className={classes.timeline}>
+        {tuples.map((tuple, index) => {
+          return (
+            <div className={classes.twoBoxes}>
+              <div className={classes.hours}>{businessHours[index]}</div>
+
+              {/* This PhD level math helps reflatten the array for return to the backend */}
+              <div
+                onClick={() => handleClick(timelineType, tuple[0], [day, index * 2])}
+                className={`${classes.box} ${classes[tuple[0]]}`}
+              >
+                <span className={classes.minutes}>:00</span>
+              </div>
+              <div
+                onClick={() => handleClick(timelineType, tuple[1], [day, index * 2 + 1])}
+                className={`${classes.box} ${classes[tuple[1]]}`}
+              >
+                <span className={classes.minutes}>:30</span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
