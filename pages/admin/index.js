@@ -1,11 +1,11 @@
 import Layout from '../../components/layouts/admin';
 import { isLoggedIn } from '../../gql/Queries/User';
-import redirect from '../../utils/redirect'
+import redirect from '../../utils/redirect';
 
 function Home() {
 	return (
 		<Layout>
-			<div>hiii</div>
+			<div>No, this is Patrick!</div>
 		</Layout>
 	);
 }
@@ -13,11 +13,11 @@ function Home() {
 export default Home;
 
 Home.getInitialProps = async ctx => {
-	const {currentUser} = await isLoggedIn(ctx.apolloClient);
-	console.log(currentUser)
+	const { currentUser } = await isLoggedIn(ctx.apolloClient);
+	console.log(currentUser);
 	if (!currentUser) {
-		redirect(ctx, '/admin/login')
+		redirect(ctx, '/admin/login');
 	} else {
-		return {}
+		return {};
 	}
-}
+};
