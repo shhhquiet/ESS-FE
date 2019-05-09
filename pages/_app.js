@@ -1,15 +1,15 @@
-// import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
+import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import JssProvider from 'react-jss/lib/JssProvider';
-//import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider } from 'react-apollo';
 import App, { Container } from 'next/app';
 //import { SnackbarProvider } from 'notistack';
 
 import getPageContext from '../utils/getPageContext';
 //mport '../static/client-styles/scss/material-kit-pro-react.scss';
 //import './static/admin-styles/scss/material-dashboard-pro-react.scss';
-//import withData from '../utils/withData';
+import withData from '../utils/withData';
 import Page from '../components/Page';
 
 class MyApp extends App {
@@ -38,15 +38,15 @@ class MyApp extends App {
 						sheetsManager={this.pageContext.sheetsManager}
 					>
 						<CssBaseline />
-						{/* <ApolloProvider client={apollo}>
+						<ApolloProvider client={apollo}>
 							<ApolloHooksProvider client={apollo}>
-								<SnackbarProvider maxSnack={3} hideIconVariant> */}
+								{/* <SnackbarProvider maxSnack={3} hideIconVariant> */} 
 						<Page>
 							<Component pageContext={this.pageContext} {...pageProps} />
 						</Page>
-						{/* </SnackbarProvider>
+						{/* {/* </SnackbarProvider> */}
 							</ApolloHooksProvider>
-						</ApolloProvider> */}
+						</ApolloProvider> 
 					</MuiThemeProvider>
 				</JssProvider>
 			</Container>
@@ -54,4 +54,4 @@ class MyApp extends App {
 	}
 }
 
-export default MyApp;
+export default withData(MyApp);
