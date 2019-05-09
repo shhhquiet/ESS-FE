@@ -6,9 +6,12 @@ export const timelineClear = '#f7f7f7';
 export const timelineBooked = '#ffb1b1';
 export const timelineAvailible = '#b1e8ff';
 export const timelineYourAppointment = 'green';
+
 export const timeColor = '#3f3f3f';
 export const timeColorWhite = '#fafafa';
 export const timeColorLight = '#dcdcdc';
-export const tiffaniBackground = '#fd3a3a';
+
+export const tiffaniBackground = '#ff4f4f';
 export const lisaBackground = '#6262ff';
-export const allisonBackground = '#1bb91b';
+export const allisonBackground = '#1bc148';
+export const loriBackground = '#ffb644';
