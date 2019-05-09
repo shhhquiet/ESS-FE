@@ -3,12 +3,6 @@ import { makeStyles } from '@material-ui/styles';
 
 import * as vars from '../utils/jssVariables';
 
-const modalColor = {
-  Tiffani: vars.tiffaniBackground,
-  Lisa: vars.lisaBackground,
-  Allison: vars.allisonBackground
-};
-
 const useStyles = makeStyles({
   lesson: {
     flex: '1 1',
@@ -17,7 +11,9 @@ const useStyles = makeStyles({
     textAlign: 'left',
     fontSize: '1rem',
     borderBottom: 'none',
-    color: vars.timeColorWhite
+    color: vars.timeColorWhite,
+    whiteSpace: 'nowrap',
+    overflow: 'hidden'
   },
   Tiffani: {
     backgroundColor: vars.tiffaniBackground
@@ -27,6 +23,9 @@ const useStyles = makeStyles({
   },
   Allison: {
     backgroundColor: vars.allisonBackground
+  },
+  Lori: {
+    backgroundColor: vars.loriBackground
   },
   modal: {
     position: 'absolute',
@@ -50,7 +49,19 @@ export default function Lesson({ lesson, ...props }) {
       >
         <div>{lesson.student}</div>
         <div style={{ fontSize: '.8rem' }}>{lesson.studentAge}</div>
-        {modalVisible ? <div className={`${classes.modal} ${classes[lesson.instructor]}`}>{lesson.student}</div> : null}
+        {modalVisible ? (
+          <div className={`${classes.modal} ${classes[lesson.instructor]}`}>
+            <div>{lesson.student}</div>
+            <div>{lesson.age}</div>
+            {lesson.notes ? (
+              <ul>
+                {lesson.notes.map(note => {
+                  return <li>{note}</li>;
+                })}
+              </ul>
+            ) : null}
+          </div>
+        ) : null}
       </div>
     </Fragment>
   );
