@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from 'perfect-scrollbar';
-import NavLink from 'next/Link';
+import Link from 'next/Link';
 import cx from 'classnames';
 import { withRouter } from 'next/router';
 // @material-ui/core components
@@ -63,6 +63,7 @@ class Sidebar extends React.Component {
 			...this.getCollapseStates(props.routes),
 		};
 	}
+	
 	// this creates the intial state of this component based on the collapse routes
 	// that it gets through this.props.routes
 	getCollapseStates = routes => {
@@ -94,7 +95,7 @@ class Sidebar extends React.Component {
 	}
 	// verifies if routeName is the one active (in browser input)
 	activeRoute = routeName => {
-		return this.props.router.pathname.indexOf(routeName) > -1 ? 'active' : '';
+		return this.props.router.pathname === `/admin${routeName}` ? 'active' : '';
 	};
 	openCollapse(collapse) {
 		var st = {};
@@ -105,6 +106,7 @@ class Sidebar extends React.Component {
 	createLinks = routes => {
 		const { classes, color } = this.props;
 		return routes.map((prop, key) => {
+		
 			if (prop.redirect) {
 				return null;
 			}
@@ -137,7 +139,7 @@ class Sidebar extends React.Component {
 							{ [classes.collapseItem]: prop.icon === undefined }
 						)}
 					>
-						<NavLink
+						<Link
 							href={'#'}
 							onClick={e => {
 								e.preventDefault();
@@ -168,7 +170,7 @@ class Sidebar extends React.Component {
 									)}
 								/>
 							</div>
-						</NavLink>
+						</Link>
 						<Collapse in={this.state[prop.state]} unmountOnExit>
 							<List className={classes.list + ' ' + classes.collapseList}>
 								{this.createLinks(prop.views)}
@@ -211,7 +213,7 @@ class Sidebar extends React.Component {
 						{ [classes.collapseItem]: prop.icon === undefined }
 					)}
 				>
-					<NavLink href={prop.layout + prop.path}>
+					<Link href={prop.layout + prop.path}>
 						<div
 							className={cx(
 								{ [navLinkClasses]: prop.icon !== undefined },
@@ -234,13 +236,13 @@ class Sidebar extends React.Component {
 								)}
 							/>
 						</div>
-					</NavLink>
+					</Link>
 				</ListItem>
 			);
 		});
 	};
 	render() {
-		const { classes, logo, image, logoText, routes, bgColor } = this.props;
+		const { classes, logo, image, logoText, routes, bgColor, userImg } = this.props;
 		const itemText =
 			classes.itemText +
 			' ' +
@@ -262,17 +264,17 @@ class Sidebar extends React.Component {
 		var user = (
 			<div className={userWrapperClass}>
 				<div className={classes.photo}>
-					<img src={avatar} className={classes.avatarImg} alt='...' />
+					<img src={userImg} className={classes.avatarImg} alt='...' />
 				</div>
 				<List className={classes.list}>
 					<ListItem className={classes.item + ' ' + classes.userItem}>
-						<NavLink
-							to={'#'}
+						<Link
+							href={'#'}
 							className={classes.itemLink + ' ' + classes.userCollapseButton}
 							onClick={() => this.openCollapse('openAvatar')}
 						>
 							<ListItemText
-								primary={this.props.user}
+								primary={this.props.userFirst}
 								secondary={
 									<b
 										className={
@@ -287,38 +289,38 @@ class Sidebar extends React.Component {
 								disableTypography={true}
 								className={itemText + ' ' + classes.userItemText}
 							/>
-						</NavLink>
+						</Link>
 						<Collapse in={this.state.openAvatar} unmountOnExit>
 							<List className={classes.list + ' ' + classes.collapseList}>
 								<ListItem className={classes.collapseItem}>
-									<NavLink to='#' className={classes.itemLink + ' ' + classes.userCollapseLinks}>
+									<Link href='#' className={classes.itemLink + ' ' + classes.userCollapseLinks}>
 										<span className={classes.collapseItemMini}>MP</span>
 										<ListItemText
 											primary={'My Profile'}
 											disableTypography={true}
 											className={collapseItemText}
 										/>
-									</NavLink>
+									</Link>
 								</ListItem>
 								<ListItem className={classes.collapseItem}>
-									<NavLink to='#' className={classes.itemLink + ' ' + classes.userCollapseLinks}>
+									<Link href='#' className={classes.itemLink + ' ' + classes.userCollapseLinks}>
 										<span className={classes.collapseItemMini}>EP</span>
 										<ListItemText
 											primary={'Edit Profile'}
 											disableTypography={true}
 											className={collapseItemText}
 										/>
-									</NavLink>
+									</Link>
 								</ListItem>
 								<ListItem className={classes.collapseItem}>
-									<NavLink to='#' className={classes.itemLink + ' ' + classes.userCollapseLinks}>
+									<Link href='#' className={classes.itemLink + ' ' + classes.userCollapseLinks}>
 										<span className={classes.collapseItemMini}>S</span>
 										<ListItemText
 											primary={'Settings'}
 											disableTypography={true}
 											className={collapseItemText}
 										/>
-									</NavLink>
+									</Link>
 								</ListItem>
 							</List>
 						</Collapse>

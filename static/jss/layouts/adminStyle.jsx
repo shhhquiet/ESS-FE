@@ -5,6 +5,7 @@ const appStyle = theme => ({
 		position: 'relative',
 		top: '0',
 		height: '100vh',
+		backgroundColor: '#eee',
 		'&:after': {
 			display: 'table',
 			clear: 'both',

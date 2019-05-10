@@ -11,7 +11,9 @@ export const timeColor = '#3f3f3f';
 export const timeColorWhite = '#fafafa';
 export const timeColorLight = '#dcdcdc';
 
-export const tiffaniBackground = '#ff4f4f';
-export const lisaBackground = '#6262ff';
-export const allisonBackground = '#1bc148';
-export const loriBackground = '#ffb644';
+export const tiffaniBackground = '#2979FF';
+export const lisaBackground = '#4429FF';
+export const allisonBackground = '#E3CC87';
+export const loriBackground = '#FF2979';
+export const suziBackground = '#4429FF';
+export const carrieBackground = '#d85e54'

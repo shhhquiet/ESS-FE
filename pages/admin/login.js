@@ -15,65 +15,71 @@ import Email from "@material-ui/icons/Email";
 
 function Home({classes}) {
   return (
-    <div className={classes.container}>
-      <GridContainer justify='center'>
-        <GridItem xs={12} sm={6} md={4}>
-          <form>
-            <Card login>
-              <CardHeader
-                className={`${classes.cardHeader} ${classes.textCenter}`}
-                color='rose'
-              >
-                <h4 className={classes.cardTitle}>Log in</h4>
-              </CardHeader>
-              <CardBody>
-                <CustomInput
-                  labelText='First Name..'
-                  id='firstname'
-                  formControlProps={{
-                    fullWidth: true,
-                  }}
-                  inputProps={{
-                    endAdornment: (
-                      <InputAdornment position='end'>
-                        <Face className={classes.inputAdornmentIcon} />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-                <CustomInput
-                  labelText='Email...'
-                  id='email'
-                  formControlProps={{
-                    fullWidth: true,
-                  }}
-                  inputProps={{
-                    endAdornment: (
-                      <InputAdornment position='end'>
-                        <Email className={classes.inputAdornmentIcon}/>
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-                <CustomInput
-                  labelText='Password'
-                  id='password'
-                  formControlProps={{
-                    fullWidth: true,
-                  }}
-                  inputProps={{
-                    endAdornment: (
-                      <InputAdornment position='end'>
-                        <Icon className={classes.inputAdornmentIcon}>lock_outline</Icon>
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </CardBody>
-            </Card>
-          </form>
-        </GridItem>
-      </GridContainer>
+    <div className={classes.wrapper}>
+      <div className={classes.fullPage}>
+        <div className={classes.container}>
+          <GridContainer justify='center'>
+            <GridItem xs={12} sm={6} md={4}>
+              <form>
+                <Card login>
+                  <CardHeader
+                    className={`${classes.cardHeader} ${classes.textCenter}`}
+                    color='rose'
+                  >
+                    <h4 className={classes.cardTitle}>Log in</h4>
+                  </CardHeader>
+                  <CardBody>
+                    <CustomInput
+                      labelText='First Name..'
+                      id='firstname'
+                      formControlProps={{
+                        fullWidth: true,
+                      }}
+                      inputProps={{
+                        endAdornment: (
+                          <InputAdornment position='end'>
+                            <Face className={classes.inputAdornmentIcon} />
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                    <CustomInput
+                      labelText='Email...'
+                      id='email'
+                      formControlProps={{
+                        fullWidth: true,
+                      }}
+                      inputProps={{
+                        endAdornment: (
+                          <InputAdornment position='end'>
+                            <Email className={classes.inputAdornmentIcon} />
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                    <CustomInput
+                      labelText='Password'
+                      id='password'
+                      formControlProps={{
+                        fullWidth: true,
+                      }}
+                      inputProps={{
+                        endAdornment: (
+                          <InputAdornment position='end'>
+                            <Icon className={classes.inputAdornmentIcon}>
+                              lock_outline
+                            </Icon>
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                  </CardBody>
+                </Card>
+              </form>
+            </GridItem>
+          </GridContainer>
+        </div>
+      </div>
     </div>
   );
 }

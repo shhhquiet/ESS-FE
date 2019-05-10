@@ -19,19 +19,24 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     flex: '1 1 auto',
-    borderRight: `1px solid ${vars.timelineBorderColorLight}`
+    margin: '0 3px',
+    //borderRight: `1px solid ${vars.timelineBorderColorLight}`
   },
   hour: {
-    '&:not(:last-child)': {
-      borderBottom: `1px solid ${vars.timelineBorderColor}`
-    }
+    
+    // '&:not(:last-child)': {
+    //   borderBottom: `1px solid ${vars.timelineBorderColorLight}`
+    // }
   },
   halfHour: {
+    border: `1px solid ${vars.timelineBorderColorLight}`,
     display: 'flex',
     justifyContent: 'center',
     height: '5.2vh',
     textAlign: 'center',
-    position: 'relative'
+    position: 'relative',
+    borderRadius: '3px'
+    
     //TODO Implement these guide lines higher up the tree
     // '&:not(:last-child)': {
     //   borderBottom: `1px solid ${vars.timelineBorderColorLight}`
@@ -40,7 +45,12 @@ const useStyles = makeStyles({
   empty: {
     color: vars.timeColorLight,
     fontSize: '1.2rem',
-    fontWeight: 200
+    fontWeight: 400,
+    //verticalAlign: 'middle',
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center'
+    // borderRadius: '3px'
   }
 });
 
@@ -48,10 +58,12 @@ export default function AdminTimeline({ slots, day, ...props }) {
   const classes = useStyles(props);
 
   //* new Array(18).fill([]) was resulting in the forEach populating each array identically for some reason. /*
-  let lessons = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
-
+  let lessons = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
+  //let lessons = [...businessHoursMap]
   //*Populates the empty 2d array above with data */
+  
   slots.forEach(slot => {
+    console.log(slot, businessHoursMap[slot.time])
     lessons[businessHoursMap[slot.time]].push(slot);
   });
 
