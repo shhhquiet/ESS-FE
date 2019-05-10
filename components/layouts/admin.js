@@ -21,7 +21,7 @@ const Layout = ({ classes, children, router }) => {
 				[classes.mainPanelSidebarMini]: miniActive
 			})
 	const [route] = dashRoutes.filter(route => router.pathname.includes(route.path))
-	console.log(route)
+	
 	return (
 		
 		<div className={classes.wrapper}>
