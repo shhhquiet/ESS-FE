@@ -1,15 +1,27 @@
+import React, {useState} from 'react';
 import {useQuery} from 'react-apollo-hooks';
+import { withRouter } from 'next/router';
 import NavBar from '../../MUI-Components/admin-components/Navbars/AdminNavbar';
 import Sidebar from '../../MUI-Components/admin-components/Sidebar/Sidebar';
 import withStyles from '@material-ui/core/styles/withStyles';
-import { CalendarToday } from '@material-ui/icons';
+import { CalendarToday, Dashboard, Stars, Receipt, SupervisorAccount, Face } from '@material-ui/icons';
+import cx from "classnames";
 import {CURRENT_USER_QUERY} from '../../gql/Queries/User'
 import style from '../../static/jss/layouts/adminStyle';
 
 
-const Layout = ({ classes, children }) => {
+const Layout = ({ classes, children, router }) => {
 	const {data} = useQuery(CURRENT_USER_QUERY)
-	console.log(data)
+	//const [mobileOpen, setMobileOpen] = useState(false)
+	const [miniActive, setMiniActive] = useState(false)
+	const mainPanel =
+      classes.mainPanel +
+      " " +
+      cx({
+				[classes.mainPanelSidebarMini]: miniActive
+			})
+	const [route] = dashRoutes.filter(route => router.pathname.includes(route.path))
+	
 	return (
 		
 		<div className={classes.wrapper}>
@@ -22,9 +34,10 @@ const Layout = ({ classes, children }) => {
 				userImg={data.currentUser.imageURL}
 				logo='/static/admin-styles/img/logo.png'
 				logoText='Eastside Swim School'
+				miniActive={miniActive}
 			/>
-			<div className={classes.mainPanel}>
-				<NavBar />
+			<div className={mainPanel}>
+				<NavBar miniActive={miniActive} sidebarMinimize={() => setMiniActive(!miniActive)} route={route}/>
 				<div className={classes.content}>
 					<div className={classes.container}>{children}</div>
 				</div>
@@ -34,39 +47,44 @@ const Layout = ({ classes, children }) => {
 	);
 };
 
-export default withStyles(style)(Layout);
+export default withRouter(withStyles(style)(Layout));
 
 var dashRoutes = [
 	{
 		path: '/dashboard',
 		name: 'Dashboard',
-		//icon: DashboardIcon,
+		icon: Dashboard,
 		// component: Dashboard,
 		layout: '/admin',
 	},
 	{
 		path: '/schedule',
 		name: 'Schedule',
+		icon: CalendarToday,
 		layout: '/admin',
 	},
 	{
 		path: '/clients',
 		name: 'Clients',
+		icon: Face,
 		layout: '/admin',
 	},
 	{
 		path: '/instructors',
 		name: 'Instructors',
+		icon: SupervisorAccount,
 		layout: '/admin',
 	},
 	{
 		path: '/reports',
 		name: 'Reports',
+		icon: Receipt,
 		layout: '/admin',
 	},
 	{
 		path: '/reviews',
 		name: 'Reviews',
+		icon: Stars,
 		layout: '/admin',
 	},
 ];

@@ -63,7 +63,7 @@ export default function AdminTimeline({ slots, day, ...props }) {
   //*Populates the empty 2d array above with data */
   
   slots.forEach(slot => {
-    console.log(slot, businessHoursMap[slot.time])
+    //console.log(slot, businessHoursMap[slot.time])
     lessons[businessHoursMap[slot.time]].push(slot);
   });
 

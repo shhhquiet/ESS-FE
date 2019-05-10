@@ -426,6 +426,7 @@ const coloredShadow = {
 export {
 	//variables
 	drawerWidth,
+	drawerMiniWidth,
 	transition,
 	container,
 	containerFluid,

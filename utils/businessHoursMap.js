@@ -24,7 +24,7 @@ const businessHoursMap = {
   '7:00PM': 22,
   '7:30PM': 23,
   '8:00PM': 24,
-  '8:30PM': 25
+  '8:30PM': 25,
 };
 
 export default businessHoursMap;
