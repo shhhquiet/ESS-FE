@@ -1,13 +1,15 @@
-import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
-const CURRENT_USER_QUERY = gql`
+export const CURRENT_USER_QUERY = gql`
 	query {
 		currentUser {
+			__typename
 			...on Employee {
         id
-			firstName
-			lastName
+				firstName
+				lastName
+				imageURL
+				role
       }
     }
   }
