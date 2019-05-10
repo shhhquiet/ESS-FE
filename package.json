@@ -34,7 +34,7 @@
     "apollo-link-ws": "^1.0.17",
     "apollo-utilities": "^1.2.1",
     "dotenv": "^8.0.0",
-    "graphql": "^14.2.1",
+    "graphql": "^14.3.0",
     "graphql-tag": "^2.10.1",
     "graphql-tools": "^4.0.4",
     "jss": "^9.8.7",
@@ -49,7 +49,7 @@
     "react-dom": "^16.8.6",
     "react-image-gallery": "^0.8.16",
     "react-jss": "^8.6.1",
-    "react-spring": "^8.0.19",
+    "react-spring": "^8.0.20",
     "styled-components": "^4.2.0",
     "styled-reboot": "^3.0.2"
   },
