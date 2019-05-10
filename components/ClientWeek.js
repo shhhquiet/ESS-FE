@@ -43,6 +43,7 @@ export default function Week({
   return (
     <div style={{ display: 'flex' }}>
       <div className={classes.hours}>
+        {console.log(businessHours)}
         {businessHours.map(hour => (
           <div>{hour}</div>
         ))}
