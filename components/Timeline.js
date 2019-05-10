@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/styles';
 // import { useSpring, animated } from 'react-spring';
 import * as vars from '../utils/jssVariables';
 import businessHours from '../utils/businessHours';
+import businessHoursMap from '../utils/businessHoursMap';
 
 // import { timeMap } from '../utils/timeMap';
 
@@ -77,6 +78,7 @@ export default function Timeline({
   day,
   isSunday,
   timelineType,
+  data,
   onClear,
   onAlertUnavailible,
   onAvailible,
@@ -174,3 +176,6 @@ export default function Timeline({
     </div>
   );
 }
+
+
+//  query.forEach(datum => initialArray[businessHoursMap[datum.time]] = 'availible')

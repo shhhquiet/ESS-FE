@@ -4,10 +4,10 @@ import { action } from '@storybook/addon-actions';
 
 import Timeline from '../components/Timeline';
 
-export const defaultSlots = new Array(18).fill('clear');
+export const defaultSlots = new Array(26).fill('clear');
 
-export const withBookedSlots = [...defaultSlots.slice(0, 17), 'booked'];
-export const withAvailibleSlots = [...defaultSlots.slice(0, 16), 'availible', 'availible'];
+export const withBookedSlots = [...defaultSlots.slice(0, 25), 'booked'];
+export const withAvailibleSlots = [...defaultSlots.slice(0, 24), 'availible', 'availible'];
 export const withMixedSlots = [
   'clear',
   'booked',
@@ -18,6 +18,14 @@ export const withMixedSlots = [
   'booked',
   'availible',
   'availible',
+  'booked',
+  'clear',
+  'availible',
+  'availible',
+  'booked',
+  'clear',
+  'availible',
+  'booked',
   'booked',
   'clear',
   'availible',
@@ -39,10 +47,26 @@ export const withClientMixedSlots = [
   'booked',
   'booked',
   'booked',
+  'yourAppointment',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
   'booked'
 ];
 export const withInstructorAvailibleSlots = [
   ...defaultSlots.slice(0, 10),
+  'availible',
+  'availible',
+  'availible',
+  'availible',
+  'availible',
+  'availible',
+  'availible',
+  'availible',
   'availible',
   'availible',
   'availible',
@@ -61,8 +85,18 @@ export const withInstructorScheduleSlots = [
   'booked',
   'booked',
   'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
+  'booked',
   'booked'
 ];
+
+
 
 export const actions = {
   onClear: action('onClear'),
@@ -95,6 +129,15 @@ storiesOf('Timeline', module)
       timelineType={'instructor schedule'}
       day={'Friday'}
       slots={withInstructorScheduleSlots}
+      {...actions}
+    />
+  ))
+  .add('laurentest', () => (
+    <Timeline
+      data={laurenQuery}
+      timelineType={'instructor schedule'}
+      day={'Friday'}
+      slots={laurenTestSlots}
       {...actions}
     />
   ));
