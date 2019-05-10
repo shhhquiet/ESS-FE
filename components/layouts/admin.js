@@ -1,25 +1,27 @@
 import React, {useState} from 'react';
 import {useQuery} from 'react-apollo-hooks';
+import { withRouter } from 'next/router';
 import NavBar from '../../MUI-Components/admin-components/Navbars/AdminNavbar';
 import Sidebar from '../../MUI-Components/admin-components/Sidebar/Sidebar';
 import withStyles from '@material-ui/core/styles/withStyles';
-import { CalendarToday, Dashboard, StarRate, Receipt } from '@material-ui/icons';
+import { CalendarToday, Dashboard, Stars, Receipt, SupervisorAccount, Face } from '@material-ui/icons';
 import cx from "classnames";
 import {CURRENT_USER_QUERY} from '../../gql/Queries/User'
 import style from '../../static/jss/layouts/adminStyle';
 
 
-const Layout = ({ classes, children }) => {
+const Layout = ({ classes, children, router }) => {
 	const {data} = useQuery(CURRENT_USER_QUERY)
-	const [mobileOpen, setMobileOpen] = useState(false)
+	//const [mobileOpen, setMobileOpen] = useState(false)
 	const [miniActive, setMiniActive] = useState(false)
-	console.log(data)
 	const mainPanel =
       classes.mainPanel +
       " " +
       cx({
 				[classes.mainPanelSidebarMini]: miniActive
 			})
+	const [route] = dashRoutes.filter(route => router.pathname.includes(route.path))
+	console.log(route)
 	return (
 		
 		<div className={classes.wrapper}>
@@ -35,7 +37,7 @@ const Layout = ({ classes, children }) => {
 				miniActive={miniActive}
 			/>
 			<div className={mainPanel}>
-				<NavBar miniActive={miniActive} sidebarMinimize={() => setMiniActive(!miniActive)}/>
+				<NavBar miniActive={miniActive} sidebarMinimize={() => setMiniActive(!miniActive)} route={route}/>
 				<div className={classes.content}>
 					<div className={classes.container}>{children}</div>
 				</div>
@@ -45,7 +47,7 @@ const Layout = ({ classes, children }) => {
 	);
 };
 
-export default withStyles(style)(Layout);
+export default withRouter(withStyles(style)(Layout));
 
 var dashRoutes = [
 	{
@@ -64,11 +66,13 @@ var dashRoutes = [
 	{
 		path: '/clients',
 		name: 'Clients',
+		icon: Face,
 		layout: '/admin',
 	},
 	{
 		path: '/instructors',
 		name: 'Instructors',
+		icon: SupervisorAccount,
 		layout: '/admin',
 	},
 	{
@@ -80,7 +84,7 @@ var dashRoutes = [
 	{
 		path: '/reviews',
 		name: 'Reviews',
-		icon: StarRate,
+		icon: Stars,
 		layout: '/admin',
 	},
 ];
