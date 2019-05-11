@@ -8,7 +8,6 @@ const useStyles = makeStyles({
   lesson: {
     flexGrow: 1,
     flexBasis: 0,
-    border: `1px solid ${vars.timelineBorderColorLight}`,
     //width: '100%',
     padding: '5px 7px',
     fontWeight: 400,
@@ -60,8 +59,7 @@ export default function Lesson({ lesson, ...props }) {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
-    <div style={{width: '100%'}}>
-      
+    <Fragment>
       <div
         onClick={() => setModalVisible(!modalVisible)}
         className={`${classes.lesson} ${classes[lesson.instructor]}`}
@@ -83,7 +81,7 @@ export default function Lesson({ lesson, ...props }) {
           </div>
         ) : null}
       </div>
-    </div>
+    </Fragment>
   );
 }
 
