@@ -28,7 +28,7 @@ const Layout = ({ classes, children, router }) => {
 			<Sidebar
 				routes={dashRoutes}
 				bgColor='blue'
-				color='lightBlue'
+				color='white'
 				userFirst={data.currentUser.firstName}
 				userLast={data.currentUser.lastName}
 				userImg={data.currentUser.imageURL}
