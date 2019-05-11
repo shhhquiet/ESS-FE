@@ -20,8 +20,9 @@ const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'space-between',
     color: vars.timeColorWhite,
-    //whiteSpace: 'nowrap',
-    //overflow: 'hidden'
+    flex: '1 1 50%',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden'
   },
   Tiffani: {
     backgroundColor: vars.tiffaniBackground
@@ -50,7 +51,7 @@ const useStyles = makeStyles({
     zIndex: '2'
   },
   icon: {
-    marginLeft: '5px'
+    margin: '0 5px'
   }
 });
 
@@ -65,9 +66,8 @@ export default function Lesson({ lesson, ...props }) {
         onClick={() => setModalVisible(!modalVisible)}
         className={`${classes.lesson} ${classes[lesson.instructor]}`}
       >
-
-        <span style={{flexGrow: 1}}> {lesson.instructor}</span>
-        {lesson.single ? <Person className={classes.icon} /> : <People className={classes.icon}/>}
+        {lesson.single ? <Person className={classes.icon} /> : <People className={classes.icon} />}
+        <span style={{ flexGrow: 1 }}>{lesson.student}</span>
         {/* <div style={{ fontSize: '.8rem' }}>{lesson.studentAge}</div> */}
         {modalVisible ? (
           <div className={`${classes.modal} ${classes[lesson.instructor]}`}>
@@ -86,3 +86,5 @@ export default function Lesson({ lesson, ...props }) {
     </div>
   );
 }
+
+// {lesson.time.slice(0, -2)} -

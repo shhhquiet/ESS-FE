@@ -62,7 +62,7 @@ export default function AdminTimeline({ slots, day, ...props }) {
   const classes = useStyles(props);
 
   //* new Array(18).fill([]) was resulting in the forEach populating each array identically for some reason. /*
-  let lessons = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
+  let lessons = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [],[],[],[],[]];
   //let lessons = [...businessHoursMap]
   //*Populates the empty 2d array above with data */
   
@@ -86,7 +86,7 @@ export default function AdminTimeline({ slots, day, ...props }) {
   const tuples = arrayReduce(lessons, 2);
 
   return (
-    <div style={{ width: '100%' }}>
+    <div style={{ width: '14%' }}>
       {/* <div className={classes.day}>{day}</div> */}
       <div className={classes.adminTimeline}>
         {tuples.map((hour, index) => {

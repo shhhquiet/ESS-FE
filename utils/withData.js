@@ -15,7 +15,7 @@ export default withApollo(
 		const ssrMode = !process.browser;
 
 		const httpLink = createHttpLink({
-			uri: endpoint
+			uri: 'http://localhost:4000'
 		});
 
 		const contextLink = setContext(() => ({
