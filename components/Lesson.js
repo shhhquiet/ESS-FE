@@ -65,6 +65,7 @@ export default function Lesson({ lesson, ...props }) {
         className={`${classes.lesson} ${classes[lesson.instructor]}`}
       >
         {lesson.single ? <Person className={classes.icon} /> : <People className={classes.icon} />}
+        {/* sup */}
         <span style={{ flexGrow: 1 }}>{lesson.student}</span>
         {/* <div style={{ fontSize: '.8rem' }}>{lesson.studentAge}</div> */}
         {modalVisible ? (

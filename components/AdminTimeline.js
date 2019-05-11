@@ -91,7 +91,11 @@ export default function AdminTimeline({ slots, day, ...props }) {
               <div className={classes.halfHour}>
                 {hour[0].length > 0 ? (
                   hour[0].map(lesson => {
+<<<<<<< HEAD
                     return <Lesson lesson={lesson} />;
+=======
+                    return <div style={{width: '100%'}}><Lesson lesson={lesson} /></div>;
+>>>>>>> ab215d749b7358be8dea2c64b30f7e5debade081
                   })
                 ) : (
                   <div className={classes.empty}>{`${businessHours[index]}:00`}</div>
@@ -100,7 +104,11 @@ export default function AdminTimeline({ slots, day, ...props }) {
               <div className={classes.halfHour}>
                 {hour[1].length > 0 ? (
                   hour[1].map(lesson => {
+<<<<<<< HEAD
                     return <Lesson lesson={lesson} />;
+=======
+                    return <div style={{width: '100%'}}><Lesson lesson={lesson} /></div>;
+>>>>>>> ab215d749b7358be8dea2c64b30f7e5debade081
                   })
                 ) : (
                   <div className={classes.empty}>{`${businessHours[index]}:30`}</div>
@@ -114,4 +122,9 @@ export default function AdminTimeline({ slots, day, ...props }) {
   );
 }
 
+<<<<<<< HEAD
 // <Lesson classes={classes} lesson={lesson}/>
+=======
+// <Lesson classes={classes} lesson={lesson}/>
+{/* <div className={classes.hours}>{`${businessHours[index]}:30`}</div> */}
+>>>>>>> ab215d749b7358be8dea2c64b30f7e5debade081
