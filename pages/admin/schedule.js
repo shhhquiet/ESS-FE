@@ -13,6 +13,7 @@ const testSlots = [
   { time: '12:30PM', instructor: 'Allison', student: "O'Rourke", studentAge: 7, notes: null },
   { time: '1:00PM', instructor: 'Suzi', student: 'Nick (Batman)', studentAge: 14, notes: null },
   { time: '1:00PM', instructor: 'Allison', student: 'Simmons', studentAge: 14, notes: null },
+  { time: '1:00PM', instructor: 'Lisa', student: 'Simmons', studentAge: 14, notes: null },
   { time: '1:30PM', instructor: 'Suzi', student: 'Bondor', studentAge: 14, notes: null },
   { time: '1:30PM', instructor: 'Allison', student: 'Eileen', studentAge: 14, notes: null },
   { time: '3:00PM', instructor: 'Allison', student: 'Nedim', studentAge: 14, notes: null },
