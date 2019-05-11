@@ -47,8 +47,8 @@ export const CREATE_STUDENT = gql`
 	}
 `;
 
-export const ADD_MEDICAL_CONDITION = gql`
-	mutation ADD_MEDICAL_CONDITION($medicalInfo: MedicalConditionCreateInput!) {
+export const ADD_MEDICAL = gql`
+	mutation ADD_MEDICAL($medicalInfo: MedicalConditionCreateInput!) {
 		addMedical(medicalInfo: $medicalInfo) {
 			id
 			description
