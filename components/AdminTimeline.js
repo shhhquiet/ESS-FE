@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import { makeStyles } from '@material-ui/styles';
 
 import businessHours from '../utils/businessHours';
@@ -29,7 +29,7 @@ const useStyles = makeStyles({
     // }
   },
   halfHour: {
-    border: `1px solid ${vars.timelineBorderColorLight}`,
+    
     display: 'flex',
     justifyContent: 'center',
     height: '5.2vh',
@@ -51,6 +51,10 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center'
     // borderRadius: '3px'
+  },
+
+  hours: {
+    textAlign: 'left', fontSize: '8px', color: vars.timeColor, fontWeight: 400,
   }
 });
 
@@ -88,19 +92,21 @@ export default function AdminTimeline({ slots, day, ...props }) {
         {tuples.map((hour, index) => {
           return (
             <div className={classes.hour}>
+            
               <div className={classes.halfHour}>
                 {hour[0].length > 0 ? (
                   hour[0].map(lesson => {
-                    return <Lesson lesson={lesson} />;
+                    return <div style={{width: '100%'}}><div className={classes.hours}>{`${businessHours[index]}:00`}</div><Lesson lesson={lesson} /></div>;
                   })
                 ) : (
                   <div className={classes.empty}>{`${businessHours[index]}:00`}</div>
                 )}
               </div>
+              
               <div className={classes.halfHour}>
                 {hour[1].length > 0 ? (
                   hour[1].map(lesson => {
-                    return <Lesson lesson={lesson} />;
+                    return <div style={{width: '100%'}}><div className={classes.hours}>{`${businessHours[index]}:30`}</div><Lesson lesson={lesson} /></div>;
                   })
                 ) : (
                   <div className={classes.empty}>{`${businessHours[index]}:30`}</div>
