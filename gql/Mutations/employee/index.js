@@ -35,3 +35,30 @@ export const CREATE_LESSON = gql`
 		}
 	}
 `;
+
+export const CREATE_CLASS = gql`
+	mutation CREATE_CLASS($classInfo: CreateClassInput!) {
+		createClass(classInfo: $classInfo) {
+			id
+			description
+			ageGroup
+			level
+			capacity
+			price
+			day
+			instructor
+			duration
+			time
+		}
+	}
+`;
+
+export const CREATE_AGE_GROUP = gql`
+	mutation CREATE_AGE_GROUP($groupDetails: AgeGroupCreateInput!) {
+		createAgeGroup(groupDetails: $groupDetails) {
+			id
+			name
+			minAge
+		}
+	}
+`;
