@@ -5,6 +5,8 @@ import { action } from '@storybook/addon-actions';
 
 import AdminTimeline from '../components/AdminTimeline';
 
+import {testCollection} from '../pages/admin/schedule'
+
 export const testSlots = [
   { time: '9:00', instructor: 'Tiffani', student: 'Lil Timmy', studentAge: 7, notes: null },
   { time: '9:30', instructor: 'Lori', student: 'jimjam', studentAge: 7, notes: null },
@@ -27,5 +29,5 @@ export const testSlots = [
 ];
 
 storiesOf('AdminTimeline', module).add('test', () => (
-  <AdminTimeline day={'Sunday'} slots={testSlots} />
+  <AdminTimeline day={'Sunday'} slots={test} />
 ));

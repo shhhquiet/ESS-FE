@@ -41,7 +41,7 @@ export default function AdminWeek({ slotsCollection, ...props }) {
   return (
     <div className={classes.container}>
     <div className={classes.date}>{days.map(day => <p style={{flex: 1}}>{day}</p>)}</div>
-    <div style={{overflow: 'auto', display: 'flex', height: 'calc(100vh - 40px)'}}>
+    <div style={{ display: 'flex'}}>
       {days.map((day, index) => {
         return <AdminTimeline slots={slotsCollection[index]} day={day} />;
       })}
