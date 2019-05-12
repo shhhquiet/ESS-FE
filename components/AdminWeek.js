@@ -13,12 +13,6 @@ const useStyles = makeStyles({
     fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
     //display: 'flex',
     margin: '20px',
-    //maxHeight: 'calc(100vh) - 40px',
-    //overflow: 'auto',
-    //position: 'relative',
-    //overflow: 'scroll',
-    //position: 'relative',
-    //border: `1px solid ${vars.timelineBorderColor}`,
     borderRadius: '6px',
     backgroundColor: '#fefefe',
     boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.14)'
@@ -32,14 +26,12 @@ const useStyles = makeStyles({
   },
 
   hour: {
-    height: '10.4vh',
-    lineHeight: '10.4vh',
+    height: '5.2vh',
+    lineHeight: '5.2vh',
     padding: '0 1.5rem',
     fontSize: '1rem',
     fontWeigtht: 200,
     color: vars.timeColor
-
- 
   }
 });
 
@@ -55,8 +47,9 @@ export default function AdminWeek({ slotsCollection, ...props }) {
       <div style={{ display: 'flex' }}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           {businessHours.map(hour => (
-            <div className={classes.hour}>
-              {hour}
+            <div>
+              <div className={classes.hour}>{hour}:00</div>
+              <div className={classes.hour}>{hour}:30</div>
             </div>
           ))}
         </div>

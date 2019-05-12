@@ -11,7 +11,7 @@ import Lesson from './Lesson';
 const styledBy = (property, mapping) => props => mapping[props[property]];
 
 const useStyles = makeStyles({
-  timeline:{
+  timeline: {
     width: '13%'
   },
   day: {
@@ -22,10 +22,9 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     flex: '1 1 auto',
-    margin: '0 3px',
-    //borderRight: `1px solid ${vars.timelineBorderColorLight}`
+    margin: '0 3px'
   },
-  
+
   halfHour: {
     border: `1px solid ${vars.timelineBorderColorLight}`,
     display: 'flex',
@@ -33,30 +32,57 @@ const useStyles = makeStyles({
     height: '5.2vh',
     textAlign: 'center',
     position: 'relative',
-    borderRadius: '3px'
-    
-   
+    borderRadius: '3px',
+    overflow: 'hidden'
   },
   empty: {
     color: vars.timeColorLight,
     fontSize: '1.2rem',
     fontWeight: 400,
-    //verticalAlign: 'middle',
     height: '100%',
     display: 'flex',
     alignItems: 'center'
-    // borderRadius: '3px'
   }
 });
 
 export default function AdminTimeline({ slots, day, ...props }) {
   const classes = useStyles(props);
 
-  //* new Array(18).fill([]) was resulting in the forEach populating each array identically for some reason. /*
-  let lessons = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [],[],[],[],[]];
-  //let lessons = [...businessHoursMap]
+  //* new Array(26).fill([]) was resulting in the forEach populating each array identically for some reason. /*
+  // let lessons = new Array(26);
+  // lessons.fill([]);
+  let lessons = [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ];
+
+
   //*Populates the empty 2d array above with data */
-  
+
   slots.forEach(slot => {
     //console.log(slot, businessHoursMap[slot.time])
     lessons[businessHoursMap[slot.time]].push(slot);
@@ -85,8 +111,8 @@ export default function AdminTimeline({ slots, day, ...props }) {
             <div className={classes.hour}>
               <div className={classes.halfHour}>
                 {hour[0].length > 0 ? (
-                  hour[0].map(lesson => {
-                    return <Lesson lesson={lesson} />;
+                  hour[0].map((lesson, index) => {
+                    return <Lesson lesson={lesson} size={hour[0].length} />;
                   })
                 ) : (
                   <div className={classes.empty}>{`${businessHours[index]}:00`}</div>
@@ -94,8 +120,8 @@ export default function AdminTimeline({ slots, day, ...props }) {
               </div>
               <div className={classes.halfHour}>
                 {hour[1].length > 0 ? (
-                  hour[1].map(lesson => {
-                    return <Lesson lesson={lesson} />;
+                  hour[1].map((lesson, index) => {
+                    return <Lesson lesson={lesson} size={hour[1].length} />;
                   })
                 ) : (
                   <div className={classes.empty}>{`${businessHours[index]}:30`}</div>
