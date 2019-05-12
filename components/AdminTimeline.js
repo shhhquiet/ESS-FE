@@ -11,6 +11,9 @@ import Lesson from './Lesson';
 const styledBy = (property, mapping) => props => mapping[props[property]];
 
 const useStyles = makeStyles({
+  timeline:{
+    width: '13%'
+  },
   day: {
     margin: '2rem 0 0 2rem',
     display: 'inline'
@@ -22,12 +25,7 @@ const useStyles = makeStyles({
     margin: '0 3px',
     //borderRight: `1px solid ${vars.timelineBorderColorLight}`
   },
-  hour: {
-    
-    // '&:not(:last-child)': {
-    //   borderBottom: `1px solid ${vars.timelineBorderColorLight}`
-    // }
-  },
+  
   halfHour: {
     border: `1px solid ${vars.timelineBorderColorLight}`,
     display: 'flex',
@@ -37,10 +35,7 @@ const useStyles = makeStyles({
     position: 'relative',
     borderRadius: '3px'
     
-    //TODO Implement these guide lines higher up the tree
-    // '&:not(:last-child)': {
-    //   borderBottom: `1px solid ${vars.timelineBorderColorLight}`
-    // }
+   
   },
   empty: {
     color: vars.timeColorLight,
@@ -82,7 +77,7 @@ export default function AdminTimeline({ slots, day, ...props }) {
   const tuples = arrayReduce(lessons, 2);
 
   return (
-    <div style={{ width: '14%' }}>
+    <div className={classes.timeline}>
       {/* <div className={classes.day}>{day}</div> */}
       <div className={classes.adminTimeline}>
         {tuples.map((hour, index) => {
@@ -91,7 +86,7 @@ export default function AdminTimeline({ slots, day, ...props }) {
               <div className={classes.halfHour}>
                 {hour[0].length > 0 ? (
                   hour[0].map(lesson => {
-                    return <div style={{width: '100%'}}><Lesson lesson={lesson} /></div>;
+                    return <Lesson lesson={lesson} />;
                   })
                 ) : (
                   <div className={classes.empty}>{`${businessHours[index]}:00`}</div>
@@ -100,7 +95,7 @@ export default function AdminTimeline({ slots, day, ...props }) {
               <div className={classes.halfHour}>
                 {hour[1].length > 0 ? (
                   hour[1].map(lesson => {
-                    return <div style={{width: '100%'}}><Lesson lesson={lesson} /></div>;
+                    return <Lesson lesson={lesson} />;
                   })
                 ) : (
                   <div className={classes.empty}>{`${businessHours[index]}:30`}</div>
@@ -115,4 +110,3 @@ export default function AdminTimeline({ slots, day, ...props }) {
 }
 
 // <Lesson classes={classes} lesson={lesson}/>
-{/* <div className={classes.hours}>{`${businessHours[index]}:30`}</div> */}

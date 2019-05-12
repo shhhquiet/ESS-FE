@@ -7,7 +7,7 @@ export const timelineBooked = '#ffb1b1';
 export const timelineAvailible = '#b1e8ff';
 export const timelineYourAppointment = 'green';
 
-export const timeColor = '#3f3f3f';
+export const timeColor = '#a8a8a8';
 export const timeColorWhite = '#fafafa';
 export const timeColorLight = '#dcdcdc';
 

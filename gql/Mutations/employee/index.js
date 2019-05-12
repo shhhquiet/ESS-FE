@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 export const SIGNIN_EMPLOYEE = gql`
 	mutation SIGNIN_EMPLOYEE($email: String!, $password: String!) {
-		signinEmployee(email: $email, password: $password) {
+		employeeSignin(email: $email, password: $password) {
 			id
 			firstName
 			lastName
@@ -13,7 +13,7 @@ export const SIGNIN_EMPLOYEE = gql`
 
 export const SIGNUP_EMPLOYEE = gql`
 	mutation SIGNUP_EMPLOYEE($data: AddEmployeeInput!) {
-		signupEmployee(data: $data) {
+		employeeSignup(data: $data) {
 			id
 			firstName
 			lastName

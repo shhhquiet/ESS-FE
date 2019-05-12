@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 import AdminTimeline from './AdminTimeline';
 import * as vars from '../utils/jssVariables';
 import days from '../utils/days';
+import businessHours from '../utils/businessHours';
 
 const styledBy = (property, mapping) => props => mapping[props[property]];
 
@@ -20,19 +21,25 @@ const useStyles = makeStyles({
     //border: `1px solid ${vars.timelineBorderColor}`,
     borderRadius: '6px',
     backgroundColor: '#fefefe',
-    boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.14)',
+    boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.14)'
     //boxShadow: vars.timelineBoxShadow,
   },
   date: {
     display: 'flex',
-    //position: 'fixed',
-    // top: 0,
-    color: '#a8a8a8',
-    // right: 0,
+    color: vars.timeColor,
     width: '100%',
-    //height: '20px',
     textAlign: 'center'
-    
+  },
+
+  hour: {
+    height: '10.4vh',
+    lineHeight: '10.4vh',
+    padding: '0 1.5rem',
+    fontSize: '1rem',
+    fontWeigtht: 200,
+    color: vars.timeColor
+
+ 
   }
 });
 
@@ -40,11 +47,22 @@ export default function AdminWeek({ slotsCollection, ...props }) {
   const classes = useStyles(props);
   return (
     <div className={classes.container}>
-    <div className={classes.date}>{days.map(day => <p style={{flex: 1}}>{day}</p>)}</div>
-    <div style={{ display: 'flex'}}>
-      {days.map((day, index) => {
-        return <AdminTimeline slots={slotsCollection[index]} day={day} />;
-      })}
+      <div className={classes.date}>
+        {days.map(day => (
+          <p style={{ flex: 1 }}>{day}</p>
+        ))}
+      </div>
+      <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          {businessHours.map(hour => (
+            <div className={classes.hour}>
+              {hour}
+            </div>
+          ))}
+        </div>
+        {days.map((day, index) => {
+          return <AdminTimeline slots={slotsCollection[index]} day={day} />;
+        })}
       </div>
     </div>
   );
