@@ -30,6 +30,7 @@ import adminNavbarLinksStyle from '../../../static/jss/component-styles/adminNav
 class HeaderLinks extends React.Component {
 	state = {
 		open: false,
+		addOpen: false,
 	};
 	handleClick = () => {
 		this.setState({ open: !this.state.open });
@@ -60,9 +61,11 @@ class HeaderLinks extends React.Component {
 						},
 					}}
 				/> */}
-				<Button color='white' aria-label='edit' justIcon round className={searchButton}>
+			
+				<Button color='white' aria-label='edit' justIcon round className={searchButton} onClick={this.props.handleAdd}>
 					<Add className={classes.headerLinksSvg + ' ' + classes.searchIcon} />
 				</Button>
+				
 				<Button
 					color='transparent'
 					simple

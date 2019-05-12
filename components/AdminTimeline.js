@@ -50,7 +50,7 @@ export default function AdminTimeline({ slots, day, ...props }) {
   let lessons = Array.from({length:26}, () => new Array());
 
   //*Populates the empty 2d array above with data */
-
+  console.log(lessons)
   slots.forEach(slot => {
     lessons[businessHoursMap[slot.time]].push(slot);
   });
