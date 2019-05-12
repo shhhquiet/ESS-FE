@@ -14,10 +14,7 @@ const useStyles = makeStyles({
   timeline: {
     width: '13%'
   },
-  day: {
-    margin: '2rem 0 0 2rem',
-    display: 'inline'
-  },
+
   adminTimeline: {
     display: 'flex',
     flexDirection: 'column',
@@ -25,14 +22,15 @@ const useStyles = makeStyles({
     margin: '0 3px'
   },
 
+
   halfHour: {
     border: `1px solid ${vars.timelineBorderColorLight}`,
+    borderRadius: '3px',
     display: 'flex',
     justifyContent: 'center',
     height: '5.2vh',
     textAlign: 'center',
     position: 'relative',
-    borderRadius: '3px',
     overflow: 'hidden'
   },
   empty: {
@@ -47,44 +45,13 @@ const useStyles = makeStyles({
 
 export default function AdminTimeline({ slots, day, ...props }) {
   const classes = useStyles(props);
+  
 
-  //* new Array(26).fill([]) was resulting in the forEach populating each array identically for some reason. /*
-  // let lessons = new Array(26);
-  // lessons.fill([]);
-  let lessons = [
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    []
-  ];
-
+  let lessons = Array.from({length:26}, () => new Array());
 
   //*Populates the empty 2d array above with data */
 
   slots.forEach(slot => {
-    //console.log(slot, businessHoursMap[slot.time])
     lessons[businessHoursMap[slot.time]].push(slot);
   });
 
@@ -104,7 +71,6 @@ export default function AdminTimeline({ slots, day, ...props }) {
 
   return (
     <div className={classes.timeline}>
-      {/* <div className={classes.day}>{day}</div> */}
       <div className={classes.adminTimeline}>
         {tuples.map((hour, index) => {
           return (

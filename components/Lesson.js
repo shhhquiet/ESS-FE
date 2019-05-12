@@ -6,9 +6,6 @@ import * as vars from '../utils/jssVariables';
 
 const useStyles = makeStyles({
   lesson: {
-    flexGrow: 1,
-    flexBasis: 0,
-    //width: '100%',
     padding: '5px 7px',
     fontWeight: 400,
     textAlign: 'left',
@@ -49,7 +46,6 @@ const useStyles = makeStyles({
     zIndex: '2'
   },
   icon: {
-    margin: '0 5px'
   }
 });
 
