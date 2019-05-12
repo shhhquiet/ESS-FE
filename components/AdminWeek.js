@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { makeStyles } from '@material-ui/styles';
 import AdminTimeline from './AdminTimeline';
+import Drawer from '@material-ui/core/Drawer';
+
 import * as vars from '../utils/jssVariables';
 import days from '../utils/days';
 import businessHours from '../utils/businessHours';
@@ -37,6 +39,18 @@ const useStyles = makeStyles({
 
 export default function AdminWeek({ slotsCollection, ...props }) {
   const classes = useStyles(props);
+
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const[lessonData, setLessonData] = useState({})
+
+  const getDrawerData = data => {
+    setLessonData(data);
+    setDrawerOpen(true);
+  };
+
+  console.log(lessonData)
+
   return (
     <div className={classes.container}>
       <div className={classes.date}>
@@ -54,9 +68,21 @@ export default function AdminWeek({ slotsCollection, ...props }) {
           ))}
         </div>
         {days.map((day, index) => {
-          return <AdminTimeline slots={slotsCollection[index]} day={day} />;
+          return (
+            <AdminTimeline handleClick={getDrawerData} slots={slotsCollection[index]} day={day} />
+          );
         })}
       </div>
+      <Drawer anchor='right' open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+        <div
+          tabIndex={0}
+          role='button'
+          onClick={() => setDrawerOpen(false)}
+          onKeyDown={() => setDrawerOpen(false)}
+        >
+          {lessonData.instructor}
+        </div>
+      </Drawer>
     </div>
   );
 }

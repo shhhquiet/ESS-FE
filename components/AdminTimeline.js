@@ -43,7 +43,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function AdminTimeline({ slots, day, ...props }) {
+export default function AdminTimeline({ slots, day, handleClick, ...props }) {
   const classes = useStyles(props);
   
 
@@ -78,7 +78,7 @@ export default function AdminTimeline({ slots, day, ...props }) {
               <div className={classes.halfHour}>
                 {hour[0].length > 0 ? (
                   hour[0].map((lesson, index) => {
-                    return <Lesson lesson={lesson} size={hour[0].length} />;
+                    return <Lesson handleClick={handleClick} lesson={lesson} size={hour[0].length} />;
                   })
                 ) : (
                   <div className={classes.empty}>{`${businessHours[index]}:00`}</div>
@@ -87,7 +87,7 @@ export default function AdminTimeline({ slots, day, ...props }) {
               <div className={classes.halfHour}>
                 {hour[1].length > 0 ? (
                   hour[1].map((lesson, index) => {
-                    return <Lesson lesson={lesson} size={hour[1].length} />;
+                    return <Lesson handleClick={handleClick} lesson={lesson} size={hour[1].length} />;
                   })
                 ) : (
                   <div className={classes.empty}>{`${businessHours[index]}:30`}</div>
