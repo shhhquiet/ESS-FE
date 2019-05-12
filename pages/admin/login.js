@@ -10,10 +10,12 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Button from '../../MUI-Components/admin-components/CustomButtons/Button';
 import Icon from '@material-ui/core/Icon';
 import { DialogActions, ButtonBase } from '@material-ui/core';
+import Router from 'next/router'
 
 // @material-ui/icons
 import Face from '@material-ui/icons/Face';
 import Email from '@material-ui/icons/Email';
+import Lock from '@material-ui/icons/Lock'
 
 import React, { useState } from 'react';
 // import Router from 'next/router';
@@ -50,7 +52,7 @@ function Home({ classes }) {
 								mutation={SIGNIN_EMPLOYEE}
 								variables={{ email: user.email, password: user.password }}
 								onError={handleError}
-								// onCompleted={Router.push('/home')}
+								onCompleted={() => Router.push('/admin/schedule')}
 							>
 								{signin => (
 									<form
@@ -72,7 +74,7 @@ function Home({ classes }) {
 												<h4 className={classes.cardTitle}>Log in</h4>
 											</CardHeader>
 											<CardBody>
-												<CustomInput
+												{/* <CustomInput
 													labelText="First Name.."
 													id="firstname"
 													formControlProps={{
@@ -85,7 +87,7 @@ function Home({ classes }) {
 															</InputAdornment>
 														)
 													}}
-												/>
+												/> */}
 												<CustomInput
 													labelText="Email..."
 													id="email"
@@ -120,7 +122,7 @@ function Home({ classes }) {
 													inputProps={{
 														endAdornment: (
 															<InputAdornment position="end">
-																<Icon className={classes.inputAdornmentIcon}>lock_outline</Icon>
+																<Lock className={classes.inputAdornmentIcon}/>
 															</InputAdornment>
 														),
 														type: 'password',
