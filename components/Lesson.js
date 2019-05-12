@@ -14,7 +14,6 @@ const useStyles = makeStyles({
     textAlign: 'left',
     fontSize: '1rem',
     borderBottom: 'none',
-    borderRadius: '3px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -54,7 +53,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Lesson({ lesson, ...props }) {
+export default function Lesson({ lesson, size, ...props }) {
   const classes = useStyles(props);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -65,9 +64,20 @@ export default function Lesson({ lesson, ...props }) {
         className={`${classes.lesson} ${classes[lesson.instructor]}`}
       >
         {lesson.single ? <Person className={classes.icon} /> : <People className={classes.icon} />}
-        {/* sup */}
-        <span style={{ flexGrow: 1 }}>{lesson.student}</span>
-        {/* <div style={{ fontSize: '.8rem' }}>{lesson.studentAge}</div> */}
+
+        {size == 1 ? (
+          <Fragment>
+            <span style={{  }}>{lesson.student}</span>
+            <div style={{ fontSize: '.8rem' }}>{lesson.studentAge}</div>
+          </Fragment>
+        ) : size == 2 ? 
+          <Fragment>
+
+            <span style={{  }}>{lesson.student[0]}</span>
+            <div style={{ fontSize: '.8rem' }}>{lesson.studentAge}</div>
+          </Fragment> :
+          null
+        }
         {modalVisible ? (
           <div className={`${classes.modal} ${classes[lesson.instructor]}`}>
             <div>{lesson.student}</div>
