@@ -49,7 +49,7 @@ function AdminNavbar({ ...props }) {
 					</Button>
 				</div>
 				<Hidden smDown implementation='css'>
-					<AdminNavbarLinks />
+					<AdminNavbarLinks handleAdd={props.handleAdd} />
 				</Hidden>
 				<Hidden mdUp implementation='css'>
 					<Button

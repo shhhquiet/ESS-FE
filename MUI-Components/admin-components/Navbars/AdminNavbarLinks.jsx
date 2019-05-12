@@ -62,7 +62,7 @@ class HeaderLinks extends React.Component {
 					}}
 				/> */}
 			
-				<Button color='white' aria-label='edit' justIcon round className={searchButton}>
+				<Button color='white' aria-label='edit' justIcon round className={searchButton} onClick={this.props.handleAdd}>
 					<Add className={classes.headerLinksSvg + ' ' + classes.searchIcon} />
 				</Button>
 				

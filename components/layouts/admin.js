@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useQuery} from 'react-apollo-hooks';
 import { withRouter } from 'next/router';
+import NewClient from '../newClient'
 import NavBar from '../../MUI-Components/admin-components/Navbars/AdminNavbar';
 import Sidebar from '../../MUI-Components/admin-components/Sidebar/Sidebar';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -13,6 +14,7 @@ import style from '../../static/jss/layouts/adminStyle';
 const Layout = ({ classes, children, router }) => {
 	const {data} = useQuery(CURRENT_USER_QUERY)
 	//const [mobileOpen, setMobileOpen] = useState(false)
+	const [newClientOpen, setNewClientOpen] = useState(false)
 	const [miniActive, setMiniActive] = useState(false)
 	const mainPanel =
       classes.mainPanel +
@@ -37,11 +39,12 @@ const Layout = ({ classes, children, router }) => {
 				miniActive={miniActive}
 			/>
 			<div className={mainPanel}>
-				<NavBar miniActive={miniActive} sidebarMinimize={() => setMiniActive(!miniActive)} route={route}/>
+				<NavBar miniActive={miniActive} handleAdd={() => setNewClientOpen(true)} sidebarMinimize={() => setMiniActive(!miniActive)} route={route}/>
 				<div className={classes.content}>
 					<div className={classes.container}>{children}</div>
 				</div>
 			</div>
+			<NewClient open={newClientOpen} handleClose={() => setNewClientOpen(false)}/>
 		</div>
 	
 	);
