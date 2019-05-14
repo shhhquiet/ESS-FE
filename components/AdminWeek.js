@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import AdminTimeline from './AdminTimeline';
 import Drawer from '@material-ui/core/Drawer';
+import ArrowBack from '@material-ui/icons/ArrowBack';
 
 import * as vars from '../utils/jssVariables';
 import days from '../utils/days';
@@ -34,6 +35,48 @@ const useStyles = makeStyles({
     fontSize: '1rem',
     fontWeigtht: 200,
     color: vars.timeColor
+  },
+  drawerPaper: {
+    width: '30rem',
+    // padding: '0 3rem 3rem 3rem',
+    borderTopLeftRadius: '1rem',
+    borderBottomLeftRadius: '1rem'
+  },
+  drawerButton: {
+    height: '7rem',
+    padding: '1.5rem',
+    color: vars.timeColorWhite,
+    display: 'flex',
+    alignItems: 'center',
+
+    '& svg': {
+      fontSize: '3rem'
+    }
+  },
+  drawerContent: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '1.4rem'
+  },
+  Tiffani: {
+    backgroundColor: vars.tiffaniBackground
+  },
+  Lisa: {
+    backgroundColor: vars.lisaBackground
+  },
+  Allison: {
+    backgroundColor: vars.allisonBackground
+  },
+  Lori: {
+    backgroundColor: vars.loriBackground
+  },
+  Suzi: {
+    backgroundColor: vars.suziBackground
+  },
+  Carrie: {
+    backgroundColor: vars.carrieBackground
   }
 });
 
@@ -42,14 +85,14 @@ export default function AdminWeek({ slotsCollection, ...props }) {
 
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const[lessonData, setLessonData] = useState({})
+  const [lessonData, setLessonData] = useState({});
 
   const getDrawerData = data => {
     setLessonData(data);
     setDrawerOpen(true);
   };
 
-  console.log(lessonData)
+  console.log(lessonData);
 
   return (
     <div className={classes.container}>
@@ -73,14 +116,26 @@ export default function AdminWeek({ slotsCollection, ...props }) {
           );
         })}
       </div>
-      <Drawer anchor='right' open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-        <div
-          tabIndex={0}
-          role='button'
-          onClick={() => setDrawerOpen(false)}
-          onKeyDown={() => setDrawerOpen(false)}
-        >
-          {lessonData.instructor}
+      <Drawer
+        classes={{
+          paper: classes.drawerPaper
+        }}
+        anchor='right'
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+      >
+        <div className={`${classes.drawerButton} ${classes[lessonData.instructor]}`}>
+          <ArrowBack
+            tabIndex={0}
+            role='button'
+            onClick={() => setDrawerOpen(false)}
+            onKeyDown={() => setDrawerOpen(false)}
+          />
+        </div>
+        <div className={classes.drawerContent}>
+          <div>Instructor: {lessonData.instructor}</div>
+          <div>Student: {lessonData.student}</div>
+          <div>Age: {lessonData.studentAge}</div>
         </div>
       </Drawer>
     </div>
