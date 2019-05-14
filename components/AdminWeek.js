@@ -55,10 +55,22 @@ const useStyles = makeStyles({
   },
   drawerContent: {
     display: 'flex',
-    flexDirection: 'column',
+    // flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    fontSize: '1.4rem'
+    fontSize: '1.4rem',
+    height: '100%'
+  },
+
+  drawerTitle: {
+    fontWeight: 700,
+    fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif'
+  },
+  drawerData: {
+    fontSize: '3rem',
+    fontWeight: 300,
+    fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
+    marginBottom: '1.5rem'
   },
   Tiffani: {
     backgroundColor: vars.tiffaniBackground
@@ -133,9 +145,14 @@ export default function AdminWeek({ slotsCollection, ...props }) {
           />
         </div>
         <div className={classes.drawerContent}>
-          <div>Instructor: {lessonData.instructor}</div>
-          <div>Student: {lessonData.student}</div>
-          <div>Age: {lessonData.studentAge}</div>
+          <div>
+            <div className={classes.drawerTitle}>Instructor:</div>
+            <div className={classes.drawerData}>{lessonData.instructor}</div>
+            <div className={classes.drawerTitle}>Student:</div>
+            <div className={classes.drawerData}>{lessonData.student}</div>
+            <div className={classes.drawerTitle}>Age: </div>
+            <div className={classes.drawerData}>{lessonData.studentAge}</div>
+          </div>
         </div>
       </Drawer>
     </div>
