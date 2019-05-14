@@ -6,9 +6,6 @@ import * as vars from '../utils/jssVariables';
 
 const useStyles = makeStyles({
   lesson: {
-    flexGrow: 1,
-    flexBasis: 0,
-    //width: '100%',
     padding: '5px 7px',
     fontWeight: 400,
     textAlign: 'left',
@@ -48,36 +45,45 @@ const useStyles = makeStyles({
     width: '200px',
     zIndex: '2'
   },
-  icon: {
-    margin: '0 5px'
-  }
+  icon: {}
 });
 
-export default function Lesson({ lesson, size, ...props }) {
+export default function Lesson({ lesson, size, handleClick, ...props }) {
   const classes = useStyles(props);
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <Fragment>
       <div
-        onClick={() => setModalVisible(!modalVisible)}
+        onClick={() => handleClick(lesson)}
         className={`${classes.lesson} ${classes[lesson.instructor]}`}
       >
         {lesson.single ? <Person className={classes.icon} /> : <People className={classes.icon} />}
 
         {size == 1 ? (
           <Fragment>
-            <span style={{  }}>{lesson.student}</span>
-            <div style={{ fontSize: '.8rem' }}>{lesson.studentAge}</div>
+            <span style={{}}>
+              {lesson.single ? lesson.student : 
+              
+              <div style={{display: 'flex', flexDirection: 'column'}}>
+                <span style={{borderBottom: '1px solid #fafafa'}}>{lesson.student[0]}</span>
+                <span>{lesson.student[1]}</span>
+              </div>
+              }
+            </span>
           </Fragment>
-        ) : size == 2 ? 
+        ) : size == 2 ? (
           <Fragment>
-
-            <span style={{  }}>{lesson.student[0]}</span>
-            <div style={{ fontSize: '.8rem' }}>{lesson.studentAge}</div>
-          </Fragment> :
-          null
-        }
+            <span>
+              {lesson.single ? lesson.student[0] : 
+              <div style={{display: 'flex', flexDirection: 'column'}}>
+                <span style={{borderBottom: '1px solid #fafafa'}}>{lesson.student[0][0]}</span>
+                <span>{lesson.student[1][0]}</span>
+              </div>
+              }
+            </span>
+          </Fragment>
+        ) : null}
         {modalVisible ? (
           <div className={`${classes.modal} ${classes[lesson.instructor]}`}>
             <div>{lesson.student}</div>
