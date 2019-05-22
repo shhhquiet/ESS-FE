@@ -14,12 +14,10 @@ const styledBy = (property, mapping) => props => mapping[props[property]];
 const useStyles = makeStyles({
   container: {
     fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
-    //display: 'flex',
     margin: '20px',
     borderRadius: '6px',
     backgroundColor: '#fefefe',
     boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.14)'
-    //boxShadow: vars.timelineBoxShadow,
   },
   date: {
     display: 'flex',
@@ -38,7 +36,6 @@ const useStyles = makeStyles({
   },
   drawerPaper: {
     width: '30rem',
-    // padding: '0 3rem 3rem 3rem',
     borderTopLeftRadius: '1rem',
     borderBottomLeftRadius: '1rem'
   },

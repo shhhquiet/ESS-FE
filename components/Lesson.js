@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/styles';
 import Person from '@material-ui/icons/Person';
 import People from '@material-ui/icons/People';
 import * as vars from '../utils/jssVariables';
+import { red } from '@material-ui/core/colors';
 
 const styledBy = (property, mapping) => props => mapping[props[property]];
 
@@ -15,14 +16,23 @@ const useStyles = makeStyles({
     borderBottom: 'none',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     color: vars.timeColorWhite,
     flex: '1 1 50%',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     placeContent: styledBy('size', {
       '3': 'center center'
-    })
+    }),
+
+    '&::before': {
+      content: "''",
+      height: '100%',
+      width:'100%',
+      position: 'absolute',
+      // backgroundColor: 'red',
+      backgroundImage: 'linear-gradient(to right, #e5737300 81%, #e57373 86%)'
+    }
   },
   Tiffani: {
     backgroundColor: vars.tiffaniBackground
