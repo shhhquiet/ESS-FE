@@ -33,7 +33,7 @@ const useStyles = makeStyles({
 		lineHeight: '5.2vh',
 		padding: '0 1.5rem',
 		fontSize: '1rem',
-		fontWeigtht: 200,
+		fontWeight: 200,
 		color: vars.timeColor
 	},
 	drawerPaper: {
@@ -111,8 +111,9 @@ export default function AdminWeek({ slotsCollection, ...props }) {
 	return (
 		<div className={classes.container}>
 			<div className={classes.date}>
+			<div style={{width: '88px'}}></div>
 				{days.map(day => (
-					<p style={{ flex: 1 }}>{day}</p>
+					<p style={{  width: '13%' }}>{day}</p>
 				))}
 			</div>
 			<div style={{ display: 'flex' }}>
