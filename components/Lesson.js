@@ -53,11 +53,10 @@ const useStyles = makeStyles({
   icon: {}
 });
 
-// export default function Lesson({ lesson, handleClick, ...props }) {
-export default function Lesson(props) {
+export default function Lesson({ lesson, handleClick, ...props }) {
   const classes = useStyles(props);
   const [modalVisible, setModalVisible] = useState(false);
-  const { size, lesson, handleClick } = props
+  const { size } = props
 
   return (
     <Fragment>
