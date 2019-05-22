@@ -4,6 +4,8 @@ import Person from '@material-ui/icons/Person';
 import People from '@material-ui/icons/People';
 import * as vars from '../utils/jssVariables';
 
+const styledBy = (property, mapping) => props => mapping[props[property]];
+
 const useStyles = makeStyles({
   lesson: {
     padding: '5px 7px',
@@ -17,7 +19,10 @@ const useStyles = makeStyles({
     color: vars.timeColorWhite,
     flex: '1 1 50%',
     whiteSpace: 'nowrap',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    placeContent: styledBy('size', {
+      '3': 'center center'
+    })
   },
   Tiffani: {
     backgroundColor: vars.tiffaniBackground
@@ -48,9 +53,11 @@ const useStyles = makeStyles({
   icon: {}
 });
 
-export default function Lesson({ lesson, size, handleClick, ...props }) {
+// export default function Lesson({ lesson, handleClick, ...props }) {
+export default function Lesson(props) {
   const classes = useStyles(props);
   const [modalVisible, setModalVisible] = useState(false);
+  const { size, lesson, handleClick } = props
 
   return (
     <Fragment>
