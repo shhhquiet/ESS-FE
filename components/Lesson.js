@@ -4,6 +4,8 @@ import Person from '@material-ui/icons/Person';
 import People from '@material-ui/icons/People';
 import * as vars from '../utils/jssVariables';
 
+const styledBy = (property, mapping) => props => mapping[props[property]];
+
 const useStyles = makeStyles({
   lesson: {
     padding: '5px 7px',
@@ -13,12 +15,37 @@ const useStyles = makeStyles({
     borderBottom: 'none',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between',
     color: vars.timeColorWhite,
     flex: '1 1 50%',
     whiteSpace: 'nowrap',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    placeContent: styledBy('size', {
+      3: 'center center'
+    }),
+
+    '& svg': {
+      margin: '0'
+    },
+
+    '&::before': {
+      content: styledBy('size', {
+        1: "''"
+      }),
+      height: '100%',
+      width:'100%',
+      position: 'absolute',
+      backgroundImage: styledBy('instructor',{
+        Allison:`linear-gradient(to right, ${vars.allisonBackground}00 81%, ${vars.allisonBackground} 93%)`,
+        Tiffani:`linear-gradient(to right, ${vars.tiffaniBackground}00 81%, ${vars.tiffaniBackground} 93%)`,
+        Lisa:`linear-gradient(to right, ${vars.lisaBackground}00 81%, ${vars.lisaBackground} 93%)`,
+        Lori:`linear-gradient(to right, ${vars.loriBackground}00 81%, ${vars.loriBackground} 93%)`,
+        Suzi:`linear-gradient(to right, ${vars.suziBackground}00 81%, ${vars.suziBackground} 93%)`,
+        Carrie:`linear-gradient(to right, ${vars.carrieBackground}00 81%, ${vars.carrieBackground} 93%)`,
+        
+      }),
+    }
   },
+
   Tiffani: {
     backgroundColor: vars.tiffaniBackground
   },
@@ -45,12 +72,18 @@ const useStyles = makeStyles({
     width: '200px',
     zIndex: '2'
   },
-  icon: {}
+  paddingLeft:{
+    paddingLeft: '8px'
+  }
 });
 
-export default function Lesson({ lesson, size, handleClick, ...props }) {
+export default function Lesson({ handleClick, ...props }) {
   const classes = useStyles(props);
   const [modalVisible, setModalVisible] = useState(false);
+  const { size, instructor, lesson } = props
+  console.log(instructor)
+
+  
 
   return (
     <Fragment>
@@ -62,7 +95,7 @@ export default function Lesson({ lesson, size, handleClick, ...props }) {
 
         {size == 1 ? (
           <Fragment>
-            <span style={{}}>
+            <span className={classes.paddingLeft}>
               {lesson.single ? lesson.student : 
               
               <div style={{display: 'flex', flexDirection: 'column'}}>
@@ -74,7 +107,7 @@ export default function Lesson({ lesson, size, handleClick, ...props }) {
           </Fragment>
         ) : size == 2 ? (
           <Fragment>
-            <span>
+            <span className={classes.paddingLeft}>
               {lesson.single ? lesson.student[0] : 
               <div style={{display: 'flex', flexDirection: 'column'}}>
                 <span style={{borderBottom: '1px solid #fafafa'}}>{lesson.student[0][0]}</span>
