@@ -203,7 +203,7 @@ const testSlots2 = [
     time: '12:30PM',
     instructor: 'Tiffani',
     single: false,
-    student: ['Suzie', 'Boozie'],
+    student: ['Helllooooooooooooo', 'Boozie'],
     studentAge: 14,
     notes: null
   },
