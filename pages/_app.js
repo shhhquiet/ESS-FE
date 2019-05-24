@@ -5,7 +5,6 @@ import JssProvider from 'react-jss/lib/JssProvider';
 import { ApolloProvider } from 'react-apollo';
 import App, { Container } from 'next/app';
 //import { SnackbarProvider } from 'notistack';
-
 import getPageContext from '../utils/getPageContext';
 //mport '../static/client-styles/scss/material-kit-pro-react.scss';
 //import './static/admin-styles/scss/material-dashboard-pro-react.scss';

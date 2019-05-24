@@ -79,7 +79,6 @@ const useStyles = makeStyles({
 
 export default function Lesson({ handleClick, ...props }) {
   const classes = useStyles(props);
-  const [modalVisible, setModalVisible] = useState(false);
   const { size, instructor, lesson } = props
   console.log(instructor)
 
@@ -116,19 +115,6 @@ export default function Lesson({ handleClick, ...props }) {
               }
             </span>
           </Fragment>
-        ) : null}
-        {modalVisible ? (
-          <div className={`${classes.modal} ${classes[lesson.instructor]}`}>
-            <div>{lesson.student}</div>
-            <div>{lesson.age}</div>
-            {lesson.notes ? (
-              <ul>
-                {lesson.notes.map(note => {
-                  return <li>{note}</li>;
-                })}
-              </ul>
-            ) : null}
-          </div>
         ) : null}
       </div>
     </Fragment>
