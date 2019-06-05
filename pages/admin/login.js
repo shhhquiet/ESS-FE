@@ -1,15 +1,15 @@
-import GridContainer from '../../MUI-Components/admin-components/Grid/GridContainer';
-import GridItem from '../../MUI-Components/admin-components/Grid/GridItem';
-import Card from '../../MUI-Components/admin-components/Card/Card';
-import CardHeader from '../../MUI-Components/admin-components/Card/CardHeader';
-import CardBody from '../../MUI-Components/admin-components/Card/CardBody';
-import CustomInput from '../../MUI-Components/admin-components/CustomInput/CustomInput';
+// import GridContainer from '../../MUI-Components/admin-components/Grid/GridContainer';
+// import GridItem from '../../MUI-Components/admin-components/Grid/GridItem';
+// import Card from '../../MUI-Components/admin-components/Card/Card';
+// import CardHeader from '../../MUI-Components/admin-components/Card/CardHeader';
+// import CardBody from '../../MUI-Components/admin-components/Card/CardBody';
+// import CustomInput from '../../MUI-Components/admin-components/CustomInput/CustomInput';
 import withStyles from '@material-ui/core/styles/withStyles';
 import styles from '../../static/admin-styles/jss/material-dashboard-pro-react/views/loginPageStyle';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import Button from '../../MUI-Components/admin-components/CustomButtons/Button';
-import Icon from '@material-ui/core/Icon';
-import { DialogActions, ButtonBase } from '@material-ui/core';
+//import Button from '../../MUI-Components/admin-components/CustomButtons/Button';
+import Icon from '@material-ui/core';
+import { DialogActions, ButtonBase, Grid, Card, CardHeader, CardContent, Input, Button } from '@material-ui/core';
 import Router from 'next/router'
 
 // @material-ui/icons
@@ -46,8 +46,8 @@ function Home({ classes }) {
 		<div className={classes.wrapper}>
 			<div className={classes.fullPage}>
 				<div className={classes.container}>
-					<GridContainer justify="center">
-						<GridItem xs={12} sm={6} md={4}>
+					<Grid container justify="center">
+						<Grid item xs={12} sm={6} md={4}>
 							<Mutation
 								mutation={SIGNIN_EMPLOYEE}
 								variables={{ email: user.email, password: user.password }}
@@ -73,7 +73,7 @@ function Home({ classes }) {
 											>
 												<h4 className={classes.cardTitle}>Log in</h4>
 											</CardHeader>
-											<CardBody>
+											<CardContent>
 												{/* <CustomInput
 													labelText="First Name.."
 													id="firstname"
@@ -88,7 +88,7 @@ function Home({ classes }) {
 														)
 													}}
 												/> */}
-												<CustomInput
+												<Input
 													labelText="Email..."
 													id="email"
 													formControlProps={{
@@ -112,7 +112,7 @@ function Home({ classes }) {
 														}
 													}}
 												/>
-												<CustomInput
+												<Input
 													error={err.password}
 													labelText="Password"
 													id="password"
@@ -136,7 +136,7 @@ function Home({ classes }) {
 														}
 													}}
 												/>
-											</CardBody>
+											</CardContent>
 											<DialogActions
 												className={`${classes.modalFooter} ${classes.justifyContentCenter}`}
 											>
@@ -157,8 +157,8 @@ function Home({ classes }) {
 									</form>
 								)}
 							</Mutation>
-						</GridItem>
-					</GridContainer>
+						</Grid>
+					</Grid>
 				</div>
 			</div>
 		</div>
