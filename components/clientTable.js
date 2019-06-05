@@ -2,20 +2,21 @@ import ReactTable from "react-table";
 
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
-import GridContainer from '../MUI-Components/admin-components/Grid/GridContainer';
-import GridItem from '../MUI-Components/admin-components/Grid/GridItem';
-import Card from '../MUI-Components/admin-components/Card/Card';
-import CardHeader from '../MUI-Components/admin-components/Card/CardHeader';
-import CardBody from '../MUI-Components/admin-components/Card/CardBody';
+import {Grid, Card, CardHeader, CardContent} from '@material-ui/core'
+// import GridContainer from '../MUI-Components/admin-components/Grid/GridContainer';
+// import GridItem from '../MUI-Components/admin-components/Grid/GridItem';
+// import Card from '../MUI-Components/admin-components/Card/Card';
+// import CardHeader from '../MUI-Components/admin-components/Card/CardHeader';
+// import CardBody from '../MUI-Components/admin-components/Card/CardBody';
 const ClientTables = () => {
   return (
-    <GridContainer>
-    <GridItem xs={12}>
+    <Grid container>
+    <Grid item xs={12}>
       <Card>
         <CardHeader color="primary">
         <h4>Students</h4>
         </CardHeader>
-        <CardBody>
+        <CardContent>
         <ReactTable
             
                 filterable
@@ -52,10 +53,10 @@ const ClientTables = () => {
                 showPaginationBottom={false}
                 className="-striped -highlight"
               />
-        </CardBody>
+        </CardContent>
         </Card>
-        </GridItem>
-        </GridContainer>
+        </Grid>
+        </Grid>
   )
 }
 

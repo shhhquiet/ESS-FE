@@ -1,27 +1,27 @@
 import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
-import { MuiThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { ApolloProvider } from 'react-apollo';
 import App, { Container } from 'next/app';
 //import { SnackbarProvider } from 'notistack';
 
-import getPageContext from '../utils/getPageContext';
+import theme from '../utils/getPageContext';
 //mport '../static/client-styles/scss/material-kit-pro-react.scss';
 //import './static/admin-styles/scss/material-dashboard-pro-react.scss';
 import withData from '../utils/withData';
 import Page from '../components/Page';
 
 class MyApp extends App {
-	constructor() {
-		super();
-		this.pageContext = getPageContext();
-	}
+	// constructor() {
+	// 	super();
+	// 	//this.pageContext = getPageContext();
+	// }
 	componentDidMount() {
 		const jssStyles = document.querySelector('#jss-server-side');
-		if (jssStyles && jssStyles.parentNode) {
-			jssStyles.parentNode.removeChild(jssStyles);
-		}
+    if (jssStyles) {
+      jssStyles.parentNode.removeChild(jssStyles);
+    }
 	}
 
 	render() {
@@ -29,13 +29,13 @@ class MyApp extends App {
 
 		return (
 			<Container>
-				<JssProvider
+				{/* <JssProvider
 					registry={this.pageContext.sheetsRegistry}
 					generateClassName={this.pageContext.generateClassName}
-				>
-					<MuiThemeProvider
-						theme={this.pageContext.theme}
-						sheetsManager={this.pageContext.sheetsManager}
+				> */}
+					<ThemeProvider
+						theme={theme}
+						// sheetsManager={this.pageContext.sheetsManager}
 					>
 						<CssBaseline />
 						<ApolloProvider client={apollo}>
@@ -47,8 +47,8 @@ class MyApp extends App {
 						{/* {/* </SnackbarProvider> */}
 							</ApolloHooksProvider>
 						</ApolloProvider> 
-					</MuiThemeProvider>
-				</JssProvider>
+					</ThemeProvider>
+				{/* </JssProvider> */}
 			</Container>
 		);
 	}
