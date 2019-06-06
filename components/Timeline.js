@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/styles';
 // import { useSpring, animated } from 'react-spring';
-import businessHours from '../utils/businessHours';
 import * as vars from '../utils/jssVariables';
+import businessHours from '../utils/businessHours';
+import businessHoursMap from '../utils/businessHoursMap';
 
 // import { timeMap } from '../utils/timeMap';
 
@@ -11,27 +12,35 @@ const styledBy = (property, mapping) => props => mapping[props[property]];
 const useStyles = makeStyles({
   day: {
     margin: '2rem 0 0 2rem',
-    display: 'inline'
+    display: 'inline',
+    fontSize: '2rem',
+    fontWeight: 200
   },
   numbers: {
     display: 'flex'
   },
   timeline: {
     display: 'flex',
+    flexDirection: 'column',
     alignContent: 'center',
-    border: `1px solid ${vars.timelineBorderColor}`,
-    margin: '0 2rem 2rem 2rem',
     borderRadius: '3px',
-    boxShadow: vars.timelineBoxShadow
+    boxShadow: vars.timelineBoxShadow,
+    '&:not(last-child)': {
+      marginRight: '1rem'
+    }
   },
   hours: {
-    textAlign: 'center',
     fontSize: '2rem',
     fontWeight: 200,
-    borderBottom: `1px solid ${vars.timelineBorderColor}`
+    width: '20%',
+    marginLeft: '1rem'
   },
   twoBoxes: {
-    flex: '1 1 auto'
+    display: 'flex',
+    alignItems: 'center',
+    '&:not(last-child)': {
+      borderBottom: '1px dotted grey'
+    }
   },
 
   box: {
@@ -39,10 +48,7 @@ const useStyles = makeStyles({
     position: 'relative',
     height: '90px',
     borderRight: `1px solid ${vars.timelineBorderColor}`,
-    '&:not(:last-child)': {
-      borderBottom: `1px solid ${vars.timelineBorderColor}`
-    },
-    cursor: 'pointer',
+    cursor: 'pointer'
   },
   minutes: {
     position: 'absolute',
@@ -70,7 +76,9 @@ const useStyles = makeStyles({
 export default function Timeline({
   slots,
   day,
+  isSunday,
   timelineType,
+  data,
   onClear,
   onAlertUnavailible,
   onAvailible,
@@ -142,15 +150,13 @@ export default function Timeline({
   };
 
   return (
-    <div>
+    <div style={{ width: '100%' }}>
       <div className={classes.day}>{day}</div>
+
       <div className={classes.timeline}>
         {tuples.map((tuple, index) => {
           return (
             <div className={classes.twoBoxes}>
-              <div className={classes.hours}>{businessHours[index]}</div>
-
-              {/* This PhD level math helps reflatten the array for return to the backend */}
               <div
                 onClick={() => handleClick(timelineType, tuple[0], [day, index * 2])}
                 className={`${classes.box} ${classes[tuple[0]]}`}
@@ -170,3 +176,6 @@ export default function Timeline({
     </div>
   );
 }
+
+
+//  query.forEach(datum => initialArray[businessHoursMap[datum.time]] = 'availible')

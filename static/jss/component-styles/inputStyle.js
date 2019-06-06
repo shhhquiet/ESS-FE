@@ -34,7 +34,8 @@ const customInputStyle = {
 	},
 	labelRoot: {
 		...defaultFont,
-		color: grayColor[12] + ' !important',
+		color: grayColor[6] + ' !important',
+		
 		fontWeight: '400',
 		fontSize: '14px',
 		lineHeight: '1.42857',
@@ -65,7 +66,7 @@ const customInputStyle = {
 		paddingTop: '27px',
 		position: 'relative',
 		'& svg,& .fab,& .far,& .fal,& .fas,& .material-icons': {
-			color: grayColor[13],
+			color: grayColor[6],
 		},
 	},
 	whiteUnderline: {
@@ -77,7 +78,7 @@ const customInputStyle = {
 		},
 	},
 	input: {
-		color: grayColor[13],
+		color: grayColor[6],
 		'&,&::placeholder': {
 			fontSize: '14px',
 			fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
@@ -86,7 +87,7 @@ const customInputStyle = {
 			opacity: '1',
 		},
 		'&::placeholder': {
-			color: grayColor[12],
+			color: grayColor[6],
 		},
 	},
 	whiteInput: {

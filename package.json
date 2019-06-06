@@ -1,49 +1,66 @@
 {
-  "name": "ess-frontend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shhhquiet/ESS-Frontend.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/shhhquiet/ESS-Frontend/issues"
-  },
-  "homepage": "https://github.com/shhhquiet/ESS-Frontend#readme",
-  "dependencies": {
-    "@material-ui/core": "^3.9.3",
-    "@material-ui/icons": "^3.0.2",
-    "@material-ui/styles": "^3.0.0-alpha.10",
-    "@zeit/next-sass": "^1.0.1",
-    "jss": "^9.8.7",
-    "next": "^8.1.0",
-    "next-images": "^1.1.1",
-    "node-sass": "^4.12.0",
-    "perfect-scrollbar": "^1.4.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-image-gallery": "^0.8.16",
-    "react-jss": "^8.6.1",
-    "react-spring": "^8.0.19",
-    "styled-components": "^4.2.0",
-    "styled-reboot": "^3.0.2"
-  },
-  "devDependencies": {
-    "@storybook/react": "^5.0.10",
-    "@storybook/addon-actions": "^5.0.10",
-    "@storybook/addon-links": "^5.0.10",
-    "@storybook/addons": "^5.0.10",
-    "@babel/core": "^7.4.4",
-    "babel-loader": "^8.0.5"
-  }
+	"name": "ess-frontend",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "next",
+		"build": "next build",
+		"start": "next start",
+		"storybook": "start-storybook -p 6006",
+		"build-storybook": "build-storybook"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/shhhquiet/ESS-Frontend.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/shhhquiet/ESS-Frontend/issues"
+	},
+	"homepage": "https://github.com/shhhquiet/ESS-Frontend#readme",
+	"dependencies": {
+		"@material-ui/core": "^4.0.0",
+		"@material-ui/icons": "^3.0.2",
+		"@material-ui/styles": "^4.0.0",
+		"@zeit/next-sass": "^1.0.1",
+		"apollo-cache-inmemory": "^1.5.1",
+		"apollo-client": "^2.5.1",
+		"apollo-link": "^1.2.11",
+		"apollo-link-context": "^1.0.17",
+		"apollo-link-error": "^1.1.10",
+		"apollo-link-http": "^1.5.14",
+		"apollo-link-ws": "^1.0.17",
+		"apollo-utilities": "^1.2.1",
+		"clsx": "^1.0.4",
+		"dotenv": "^8.0.0",
+		"graphql": "^14.3.0",
+		"graphql-tag": "^2.10.1",
+		"graphql-tools": "^4.0.4",
+		"jss": "^9.8.7",
+		"next": "^8.1.0",
+		"next-images": "^1.1.1",
+		"next-with-apollo": "^3.4.0",
+		"node-sass": "^4.12.0",
+		"perfect-scrollbar": "^1.4.0",
+		"react": "^16.8.6",
+		"react-apollo": "^2.5.5",
+		"react-apollo-hooks": "^0.4.5",
+		"react-dom": "^16.8.6",
+		"react-image-gallery": "^0.8.16",
+		"react-jss": "^8.6.1",
+		"react-spring": "^8.0.20",
+		"react-table": "^6.10.0",
+		"styled-components": "^4.2.0",
+		"styled-reboot": "^3.0.2"
+	},
+	"devDependencies": {
+		"@storybook/react": "^5.0.11",
+		"@storybook/addon-actions": "^5.0.11",
+		"@storybook/addon-links": "^5.0.11",
+		"@storybook/addons": "^5.0.11",
+		"@babel/core": "^7.4.4",
+		"babel-loader": "^8.0.5"
+	}
 }

@@ -1,11 +1,12 @@
 import Layout from '../../components/layouts/admin';
 import { isLoggedIn } from '../../gql/Queries/User';
 import redirect from '../../utils/redirect';
+import ClientTable from '../../components/clientTable'
 
 function Home() {
 	return (
 		<Layout>
-			<div>No, this is Patrick!</div>
+			<ClientTable />
 		</Layout>
 	);
 }

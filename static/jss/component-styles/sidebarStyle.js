@@ -133,7 +133,7 @@ const sidebarStyle = theme => ({
 		transform: 'translate3d(0px, 0, 0)',
 		textTransform: 'uppercase',
 		padding: '5px 0px',
-		fontSize: '14px',
+		fontSize: '13px',
 		whiteSpace: 'nowrap',
 		fontWeight: '600',
 		lineHeight: '30px',
@@ -188,6 +188,7 @@ const sidebarStyle = theme => ({
 		textDecoration: 'none',
 		margin: '0',
 		padding: '0',
+		cursor: 'pointer'
 	},
 	userItem: {
 		'&:last-child': {
@@ -197,6 +198,7 @@ const sidebarStyle = theme => ({
 	itemLink: {
 		paddingLeft: '10px',
 		paddingRight: '10px',
+		cursor: 'pointer',
 		transition: 'all 300ms linear',
 		margin: '10px 15px 0',
 		borderRadius: '3px',
@@ -247,7 +249,8 @@ const sidebarStyle = theme => ({
 		},
 	},
 	userItemText: {
-		lineHeight: '22px',
+		lineHeight: '40px',
+		fontSize: '20px'
 	},
 
 	itemTextMini: {
@@ -264,6 +267,7 @@ const sidebarStyle = theme => ({
 		textDecoration: 'none',
 		margin: '10px 0 0 0',
 		padding: '0',
+		cursor: 'pointer'
 	},
 	collapseActive: {
 		outline: 'none',
@@ -336,7 +340,10 @@ const sidebarStyle = theme => ({
 		borderLeft: '4px solid transparent',
 	},
 	userCaret: {
-		marginTop: '10px',
+		marginTop: '18px',
+		borderTop: '7px solid',
+		borderRight: '7px solid transparent',
+		borderLeft: '7px solid transparent',
 	},
 
 	caretActive: {
@@ -348,6 +355,22 @@ const sidebarStyle = theme => ({
 			backgroundColor: primaryColor[0],
 			...primaryBoxShadow,
 		},
+	},
+
+	lightBlue: {
+		'&,&:hover,&:focus': {
+		color: blackColor,
+
+			backgroundColor: theme.palette.secondary.main,
+			boxShadow:
+				'0 12px 20px -10px rgba(' +
+				hexToRgb(infoColor[0]) +
+				',.28), 0 4px 20px 0 rgba(' +
+				hexToRgb(blackColor) +
+				',.12), 0 7px 8px -5px rgba(' +
+				hexToRgb(infoColor[0]) +
+				',.2)',
+		}
 	},
 	blue: {
 		'&,&:hover,&:focus': {
@@ -461,8 +484,8 @@ const sidebarStyle = theme => ({
 	},
 	photo: {
 		transition: 'all 300ms linear',
-		width: '34px',
-		height: '34px',
+		width: '40px',
+		height: '40px',
 		overflow: 'hidden',
 		float: 'left',
 		zIndex: '5',
