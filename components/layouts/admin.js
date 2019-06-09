@@ -36,7 +36,7 @@ import {
 
 import {CURRENT_USER_QUERY} from "../../gql/Queries/User";
 
-const drawerWidth = 240;
+const drawerWidth = 220;
 
 const useStyles = makeStyles(theme => ({
   root: {
