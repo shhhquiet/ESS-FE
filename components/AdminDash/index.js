@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 
 import RevenueChart from './RevenueChart'
 import StudentChart from './StudentChart'
+import MessageBoard from './MessageBoard'
 import TodoList from './Todo'
 
 const useStyles = makeStyles(theme => ({
@@ -53,6 +54,9 @@ const DashBoard = () => {
         <Grid item xs={4} container spacing={3}>
           <Grid item xs={12}>
             <Paper className={classes.paper}>mail</Paper>
+          </Grid>
+          <Grid item xs={12}>
+            <Paper className={classes.paper}><MessageBoard/></Paper>
           </Grid>
           <Grid item xs={12}>
             <Paper className={classes.paper}><TodoList /></Paper>

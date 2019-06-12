@@ -4,6 +4,7 @@ import redirect from '../../utils/redirect';
 import ClientTable from '../../components/clientTable'
 
 function Home() {
+	console.log('hi')
 	return (
 		<Layout>
 			<ClientTable />
