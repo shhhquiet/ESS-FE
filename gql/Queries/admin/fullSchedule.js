@@ -5,7 +5,6 @@ export const FULL_SCHEDULE = gql`
     fullSchedule {
       lessons {
         id
-        
       }
       classes {
         id 
