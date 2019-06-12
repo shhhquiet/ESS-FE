@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 import businessHours from '../utils/businessHours';
 import businessHoursMap from '../utils/businessHoursMap';
 import * as vars from '../utils/jssVariables';
+import clsx from 'clsx';
 
 import Lesson from './Lesson';
 // import { timeMap } from '../utils/timeMap';
@@ -50,7 +51,7 @@ export default function AdminTimeline({ slots, day, handleClick, ...props }) {
   let lessons = Array.from({length:26}, () => new Array());
 
   //*Populates the empty 2d array above with data */
-  console.log(lessons)
+  
   slots.forEach(slot => {
     lessons[businessHoursMap[slot.time]].push(slot);
   });
@@ -70,7 +71,7 @@ export default function AdminTimeline({ slots, day, handleClick, ...props }) {
   const tuples = arrayReduce(lessons, 2);
 
   return (
-    <div className={classes.timeline}>
+    <div className={clsx(day && classes.timeline)}>
       <div className={classes.adminTimeline}>
         {tuples.map((hour, index) => {
           return (

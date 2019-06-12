@@ -7,6 +7,7 @@ import RevenueChart from './RevenueChart'
 import StudentChart from './StudentChart'
 import MessageBoard from './MessageBoard'
 import TodoList from './Todo'
+import DayView from './DayView'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -15,7 +16,10 @@ const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
-    color: theme.palette.text.secondary,
+    background: '#fff',
+    boxShadow: '0 1px 4px 0 rgba(0,0,0,.14)',
+    borderRadius: '6px',
+    color: '#333'
   },
 }));
 
@@ -25,12 +29,12 @@ const DashBoard = () => {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={3} container>
+        <Grid item xs={3} container spacing={3}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>Schedule</Paper>
         </Grid>
         <Grid item xs={12}>
-          <Paper className={classes.paper}>Schedule</Paper>
+          <Paper className={classes.paper}><DayView /></Paper>
         </Grid>
         </Grid>
         <Grid item xs={5}>
@@ -47,7 +51,7 @@ const DashBoard = () => {
               <Paper className={classes.paper}><RevenueChart/></Paper>
             </Grid>
             <Grid item xs={12}>
-              <Paper className={classes.paper}><StudentChart/></Paper>
+              <StudentChart/>
             </Grid>
           </Grid>
         </Grid>
