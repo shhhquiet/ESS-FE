@@ -41,6 +41,7 @@ const drawerWidth = 220;
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
+    background: '#eee'
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -111,7 +112,7 @@ const Layout = ({children, router}) => {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const {data} = useQuery(CURRENT_USER_QUERY);
-
+console.log(open)
   function handleDrawerOpen() {
     setOpen(true);
   }
