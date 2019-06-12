@@ -81,7 +81,6 @@ export default function Lesson({ handleClick, ...props }) {
   const classes = useStyles(props);
   const [modalVisible, setModalVisible] = useState(false);
   const { size, instructor, lesson } = props
-  console.log(instructor)
 
   
 

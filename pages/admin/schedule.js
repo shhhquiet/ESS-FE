@@ -2,6 +2,8 @@ import Layout from '../../components/layouts/admin';
 import { isLoggedIn } from '../../gql/Queries/User';
 import redirect from '../../utils/redirect';
 import AdminWeek from '../../components/AdminWeek';
+import {useQuery} from 'react-apollo-hooks';
+import {FULL_SCHEDULE} from '../../gql/Queries/admin/fullSchedule'
 
 const testSlots = [
   {
@@ -345,6 +347,8 @@ export const testCollection = [
 ];
 
 function Home() {
+  const data = useQuery(FULL_SCHEDULE)
+  console.log(data)
   return (
     <Layout>
       <AdminWeek slotsCollection={testCollection} />

@@ -2,6 +2,7 @@ import Layout from '../../components/layouts/admin';
 import { isLoggedIn } from '../../gql/Queries/User';
 import redirect from '../../utils/redirect';
 
+
 function Home() {
 	return (
 		<Layout>

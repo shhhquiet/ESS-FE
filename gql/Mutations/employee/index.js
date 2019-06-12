@@ -26,8 +26,6 @@ export const CREATE_LESSON = gql`
 	mutation CREATE_LESSON($data: LessonCreateInput!) {
 		createLesson(data: $data) {
 			id
-			name
-			description
 			day
 			time
 			duration
