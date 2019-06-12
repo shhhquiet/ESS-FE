@@ -8,7 +8,7 @@ const data = [
   {name: "Page D", uv: 300, pv: 2400, amt: 2400},
 ];
 
-const Revenue = () => {
+const Students = () => {
   return (
     <AreaChart
       width={550}
@@ -24,4 +24,4 @@ const Revenue = () => {
   );
 };
 
-export default Revenue;
+export default Students;
