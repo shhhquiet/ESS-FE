@@ -21,8 +21,9 @@ class MyApp extends App {
 		const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
       jssStyles.parentNode.removeChild(jssStyles);
-    }
-	}
+		}
+		
+}
 
 	render() {
 		const { Component, apollo, pageProps } = this.props;
