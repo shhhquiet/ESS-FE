@@ -60,3 +60,14 @@ export const CREATE_AGE_GROUP = gql`
 		}
 	}
 `;
+
+export const CREATE_MESSAGE = gql`
+	mutation CREATE_MESSAGE($text: String!, $title: String!) {
+		createMessage(text: $text, title: $title) {
+			id
+			text 
+			title 
+			createdAt
+		}
+	}
+`

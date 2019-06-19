@@ -8,6 +8,7 @@ import StudentChart from './StudentChart'
 import MessageBoard from './MessageBoard'
 import TodoList from './Todo'
 import DayView from './DayView'
+import Spotify from './Spotify'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,6 +26,7 @@ const useStyles = makeStyles(theme => ({
 
 const DashBoard = () => {
   const classes = useStyles();
+
 
   return (
     <div className={classes.root}>
@@ -56,6 +58,9 @@ const DashBoard = () => {
           </Grid>
         </Grid>
         <Grid item xs={4} container spacing={3}>
+        <Grid item xs={12}>
+            <Spotify />
+          </Grid>
           <Grid item xs={12}>
             <Paper className={classes.paper}>mail</Paper>
           </Grid>
